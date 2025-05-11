@@ -1,62 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SereneAI LTD</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Open+Sans:wght@400&family=Raleway:ital@1&display=swap" rel="stylesheet">
+
   <style>
+    :root {
+      --navy: #0B2342;
+      --teal: #2CA58D;
+      --light-gray: #F6F9F9;
+      --alt-light: #EEF5F4;
+      --dark-gray: #4D4D4D;
+      --white: #FFFFFF;
+    }
+
     body {
       margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background-color: #f6f9f9;
-      color: #0b2342;
+      font-family: 'Open Sans', sans-serif;
+      background-color: var(--light-gray);
+      color: var(--navy);
       line-height: 1.6;
     }
+
     header {
-      background: #ffffff;
+      background: var(--white);
       padding: 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 2px solid #2ca58d;
+      border-bottom: 2px solid var(--teal);
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     }
+
     .logo {
       display: flex;
       align-items: center;
     }
+
     .logo img {
       height: 40px;
       margin-right: 1rem;
     }
+
+    .logo strong {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      color: var(--navy);
+    }
+
     nav a {
       margin: 0 1rem;
       text-decoration: none;
-      color: #0b2342;
+      color: var(--navy);
       font-weight: 500;
+      font-family: 'Montserrat', sans-serif;
       transition: color 0.3s;
     }
+
     nav a:hover {
-      color: #2ca58d;
+      color: var(--teal);
     }
+
     .hero {
       padding: 6rem 2rem 4rem;
-      background: linear-gradient(120deg, #eef5f4, #ffffff);
+      background: linear-gradient(120deg, var(--alt-light), var(--white));
       text-align: center;
       animation: fadeIn 1.5s ease-in-out;
     }
+
     .hero h1 {
       font-size: 3rem;
+      font-family: 'Montserrat', sans-serif;
       margin-bottom: 1rem;
       animation: fadeInDown 1s ease-in-out;
     }
+
     .hero p {
       font-size: 1.4rem;
-      color: #4d4d4d;
+      color: var(--dark-gray);
       max-width: 700px;
       margin: 0 auto;
       animation: fadeIn 2s ease-in-out;
     }
+
     .section {
       padding: 4rem 2rem;
       max-width: 1000px;
@@ -64,15 +94,20 @@
       text-align: center;
       animation: fadeInUp 1.5s ease-in-out;
     }
+
     .section h2 {
-      color: #2ca58d;
+      font-family: 'Montserrat', sans-serif;
       font-size: 2rem;
+      color: var(--teal);
       margin-bottom: 1rem;
     }
-    .section p, .section ul {
+
+    .section p,
+    .section ul {
       font-size: 1.1rem;
-      color: #333;
+      color: var(--dark-gray);
     }
+
     .icons-row {
       display: flex;
       flex-wrap: wrap;
@@ -80,8 +115,9 @@
       gap: 2rem;
       margin-top: 2rem;
     }
+
     .icon-card {
-      background: white;
+      background: var(--white);
       padding: 1.5rem;
       border-radius: 10px;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -89,50 +125,40 @@
       text-align: center;
       animation: slideIn 1.5s ease-in-out;
     }
+
     .icon-card img {
       height: 60px;
       margin-bottom: 1rem;
     }
+
     .icon-card p {
       margin: 0;
     }
+
     ul {
       list-style: none;
       padding: 0;
     }
+
     ul li {
       padding: 0.5rem 0;
       position: relative;
     }
+
     ul li::before {
       content: '\2713';
-      color: #2ca58d;
+      color: var(--teal);
       font-weight: bold;
       margin-right: 0.5rem;
     }
-    .cta {
-      text-align: center;
-      margin-top: 2rem;
-    }
-    .cta button {
-      background-color: #2ca58d;
-      color: #fff;
-      border: none;
-      padding: 1rem 2.5rem;
-      font-size: 1.1rem;
-      border-radius: 30px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-    .cta button:hover {
-      background-color: #23876f;
-    }
+
     .photo-section {
-      background: #ffffff;
+      background: var(--white);
       padding: 4rem 2rem;
       text-align: center;
       animation: fadeInUp 2s ease-in-out;
     }
+
     .photo-section img {
       max-width: 100%;
       border-radius: 10px;
@@ -140,39 +166,132 @@
       margin-top: 2rem;
       transition: transform 0.4s ease;
     }
+
     .photo-section img:hover {
       transform: scale(1.03);
     }
+
     footer {
-      background: #0b2342;
-      color: white;
+      background: var(--navy);
+      color: var(--white);
       padding: 2rem;
       text-align: center;
       margin-top: 4rem;
       animation: fadeIn 2s ease-in-out;
     }
+
+    /* Contact Section (included new version) */
+    .contact-section {
+      background-color: var(--white);
+      padding: 4rem 2rem;
+      margin-top: 4rem;
+      max-width: 700px;
+      border-radius: 10px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+      font-family: 'Open Sans', sans-serif;
+      animation: fadeInUp 1.2s ease;
+    }
+
+    .contact-section h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--teal);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .section-intro {
+      color: var(--dark-gray);
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .form-group label {
+      font-weight: 600;
+      font-family: 'Montserrat', sans-serif;
+      margin-bottom: 0.5rem;
+      display: block;
+      color: var(--navy);
+    }
+
+    input[type="text"],
+    textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      background-color: var(--alt-light);
+      font-family: 'Open Sans', sans-serif;
+      transition: border-color 0.3s ease;
+    }
+
+    input[type="text"]:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--teal);
+    }
+
+    textarea {
+      height: 140px;
+      resize: vertical;
+    }
+
+    .cta {
+      text-align: left;
+    }
+
+    button {
+      background-color: var(--teal);
+      color: var(--white);
+      border: none;
+      padding: 1rem 2.5rem;
+      font-size: 1.1rem;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #23876f;
+    }
+
+    /* Animations */
     @keyframes fadeInDown {
       0% { opacity: 0; transform: translateY(-20px); }
       100% { opacity: 1; transform: translateY(0); }
     }
+
     @keyframes fadeInUp {
       0% { opacity: 0; transform: translateY(20px); }
       100% { opacity: 1; transform: translateY(0); }
     }
+
     @keyframes fadeIn {
       from { opacity: 0; }
       to { opacity: 1; }
     }
+
     @keyframes slideIn {
       0% { opacity: 0; transform: translateX(-30px); }
       100% { opacity: 1; transform: translateX(0); }
     }
   </style>
 </head>
+
 <body>
   <header>
     <div class="logo">
-      <img src="your-logo-url.png" alt="SereneAI Logo">
+      <img src="your-logo-url.png" alt="SereneAI Logo" />
       <strong>SereneAI LTD</strong>
     </div>
     <nav>
@@ -196,23 +315,23 @@
     <h2>Our Services</h2>
     <div class="icons-row">
       <div class="icon-card">
-        <img src="https://img.icons8.com/clouds/100/strategy.png" alt="Strategy">
+        <img src="https://img.icons8.com/clouds/100/strategy.png" alt="Strategy" />
         <p>AI Strategy & Roadmapping</p>
       </div>
       <div class="icon-card">
-        <img src="https://img.icons8.com/clouds/100/settings.png" alt="Audit">
+        <img src="https://img.icons8.com/clouds/100/settings.png" alt="Audit" />
         <p>Automation Audits</p>
       </div>
       <div class="icon-card">
-        <img src="https://img.icons8.com/clouds/100/combo-chart.png" alt="Tools">
+        <img src="https://img.icons8.com/clouds/100/combo-chart.png" alt="Tools" />
         <p>Tool Recommendations & Setup</p>
       </div>
       <div class="icon-card">
-        <img src="https://img.icons8.com/clouds/100/law.png" alt="Ethical AI">
+        <img src="https://img.icons8.com/clouds/100/law.png" alt="Ethical AI" />
         <p>Ethical AI Consulting</p>
       </div>
       <div class="icon-card">
-        <img src="https://img.icons8.com/clouds/100/training.png" alt="Coaching">
+        <img src="https://img.icons8.com/clouds/100/training.png" alt="Coaching" />
         <p>1:1 Coaching</p>
       </div>
     </div>
@@ -221,19 +340,46 @@
   <section class="photo-section">
     <h2>How We Work</h2>
     <p>We combine thoughtful design, strategic insight, and a human-first mindset to guide your AI journey.</p>
-    <img src="https://images.unsplash.com/photo-1531497865146-5f1f1a1a9e53?auto=format&fit=crop&w=1200&q=80" alt="Team working with AI tools">
+    <img src="https://images.unsplash.com/photo-1531497865146-5f1f1a1a9e53?auto=format&fit=crop&w=1200&q=80" alt="Team working with AI tools" />
   </section>
 
-  <section id="contact" class="section">
+  <section id="contact" class="contact-section">
     <h2>Contact Us</h2>
-    <p>If you're ready to make AI work for you, let's connect. Fill out the form below to start a conversation.</p>
-    <div class="cta">
-      <button>Book a Consultation</button>
-    </div>
+    <p class="section-intro">If you're ready to make AI work for you, let's connect. Fill out the form below to start a conversation.</p>
+    <form id="contact-form" action="your-backend-endpoint" method="POST" novalidate>
+      <div class="form-group">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="name" placeholder="Jane Doe" required />
+      </div>
+      <div class="form-group">
+        <label for="contact">Your Contact (Email or Phone)</label>
+        <input type="text" id="contact" name="contact" placeholder="jane@example.com or +1 555-123-4567" required />
+      </div>
+      <div class="form-group">
+        <label for="question">Your Question</label>
+        <textarea id="question" name="question" placeholder="What would you like to know?" required></textarea>
+      </div>
+      <div class="cta">
+        <button type="submit">Submit</button>
+      </div>
+    </form>
   </section>
 
   <footer>
     <p>&copy; 2025 SereneAI LTD. All rights reserved.</p>
   </footer>
+
+  <script>
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      const contactField = document.getElementById('contact').value.trim();
+      const emailPattern = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
+      const phonePattern = /^[\\d\\s\\+\\-\\(\\)]+$/;
+
+      if (!emailPattern.test(contactField) && !phonePattern.test(contactField)) {
+        alert("Please enter a valid email or phone number.");
+        e.preventDefault();
+      }
+    });
+  </script>
 </body>
 </html>
