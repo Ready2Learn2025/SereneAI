@@ -4,237 +4,236 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SereneAI LTD</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
-    /* General Reset */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
     body {
+      margin: 0;
       font-family: 'Poppins', sans-serif;
-      background-color: #f8f8f8;
-      color: #333;
+      background-color: #f6f9f9;
+      color: #0b2342;
       line-height: 1.6;
     }
-    
-    /* Hero Section */
-    #hero {
-      background-color: #00aaff;
-      color: white;
+    header {
+      background: #ffffff;
+      padding: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #2ca58d;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+    .logo img {
+      height: 40px;
+      margin-right: 1rem;
+    }
+    nav a {
+      margin: 0 1rem;
+      text-decoration: none;
+      color: #0b2342;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #2ca58d;
+    }
+    .hero {
+      padding: 6rem 2rem 4rem;
+      background: linear-gradient(120deg, #eef5f4, #ffffff);
       text-align: center;
-      padding: 80px 20px;
       animation: fadeIn 1.5s ease-in-out;
     }
-    #hero h1 {
-      font-size: 3.5em;
-      margin-bottom: 10px;
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      animation: fadeInDown 1s ease-in-out;
     }
-    #hero p {
-      font-size: 1.2em;
-      font-weight: 300;
-      margin-bottom: 30px;
+    .hero p {
+      font-size: 1.4rem;
+      color: #4d4d4d;
+      max-width: 700px;
+      margin: 0 auto;
+      animation: fadeIn 2s ease-in-out;
     }
-    #hero .btn {
-      background-color: #4f4f4f;
-      color: white;
-      padding: 12px 25px;
-      font-size: 1.1em;
+    .section {
+      padding: 4rem 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+      text-align: center;
+      animation: fadeInUp 1.5s ease-in-out;
+    }
+    .section h2 {
+      color: #2ca58d;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .section p, .section ul {
+      font-size: 1.1rem;
+      color: #333;
+    }
+    .icons-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .icon-card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      max-width: 200px;
+      text-align: center;
+      animation: slideIn 1.5s ease-in-out;
+    }
+    .icon-card img {
+      height: 60px;
+      margin-bottom: 1rem;
+    }
+    .icon-card p {
+      margin: 0;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    ul li {
+      padding: 0.5rem 0;
+      position: relative;
+    }
+    ul li::before {
+      content: '\2713';
+      color: #2ca58d;
+      font-weight: bold;
+      margin-right: 0.5rem;
+    }
+    .cta {
+      text-align: center;
+      margin-top: 2rem;
+    }
+    .cta button {
+      background-color: #2ca58d;
+      color: #fff;
       border: none;
+      padding: 1rem 2.5rem;
+      font-size: 1.1rem;
       border-radius: 30px;
       cursor: pointer;
-      text-decoration: none;
-      transition: all 0.3s ease;
+      transition: background-color 0.3s;
     }
-    #hero .btn:hover {
-      background-color: #333;
+    .cta button:hover {
+      background-color: #23876f;
     }
-
-    /* About Section */
-    #about {
-      padding: 60px 20px;
+    .photo-section {
+      background: #ffffff;
+      padding: 4rem 2rem;
       text-align: center;
+      animation: fadeInUp 2s ease-in-out;
     }
-    #about h2 {
-      font-size: 2.5em;
-      color: #333;
-      margin-bottom: 20px;
-    }
-    #about p {
-      font-size: 1.1em;
-      color: #555;
-      max-width: 800px;
-      margin: 0 auto 40px;
-    }
-
-    /* Services Section */
-    #services {
-      background-color: #ffffff;
-      padding: 60px 20px;
-    }
-    #services h2 {
-      text-align: center;
-      font-size: 2.5em;
-      margin-bottom: 40px;
-    }
-    .services-container {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    .service {
-      text-align: center;
-      flex: 1;
-      max-width: 250px;
-      margin: 20px;
-      background-color: #f1f1f1;
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      transition: all 0.3s ease;
-    }
-    .service:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-    }
-    .service-icon {
-      font-size: 3em;
-      color: #00aaff;
-      margin-bottom: 20px;
-    }
-    .service h3 {
-      font-size: 1.5em;
-      margin-bottom: 15px;
-      color: #333;
-    }
-    .service p {
-      color: #555;
-    }
-
-    /* Photo Section */
-    #photo-section {
-      background-color: #eef1f3;
-      padding: 60px 20px;
-      text-align: center;
-    }
-    #photo-section img {
+    .photo-section img {
       max-width: 100%;
-      border-radius: 15px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      animation: slideIn 1s ease-out;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      margin-top: 2rem;
+      transition: transform 0.4s ease;
     }
-
-    /* Contact Section */
-    #contact {
-      padding: 60px 20px;
-      background-color: #00aaff;
+    .photo-section img:hover {
+      transform: scale(1.03);
+    }
+    footer {
+      background: #0b2342;
       color: white;
+      padding: 2rem;
       text-align: center;
+      margin-top: 4rem;
+      animation: fadeIn 2s ease-in-out;
     }
-    #contact h2 {
-      font-size: 2.5em;
-      margin-bottom: 20px;
+    @keyframes fadeInDown {
+      0% { opacity: 0; transform: translateY(-20px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
-    #contact p {
-      font-size: 1.2em;
-      margin-bottom: 30px;
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
-    #contact .btn {
-      background-color: white;
-      color: #00aaff;
-      border-radius: 30px;
-      padding: 12px 25px;
-      font-size: 1.2em;
-      transition: all 0.3s ease;
-    }
-    #contact .btn:hover {
-      background-color: #333;
-      color: white;
-    }
-
-    /* Animations */
     @keyframes fadeIn {
-      0% { opacity: 0; }
-      100% { opacity: 1; }
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
     @keyframes slideIn {
-      0% { transform: translateX(-100%); }
-      100% { transform: translateX(0); }
-    }
-
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 20px;
-      background-color: #333;
-      color: white;
+      0% { opacity: 0; transform: translateX(-30px); }
+      100% { opacity: 1; transform: translateX(0); }
     }
   </style>
 </head>
 <body>
+  <header>
+    <div class="logo">
+      <img src="your-logo-url.png" alt="SereneAI Logo">
+      <strong>SereneAI LTD</strong>
+    </div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
 
-  <!-- Hero Section -->
-  <section id="hero">
-    <h1>SereneAI LTD</h1>
-    <p>Clarity in an Automated World</p>
-    <a href="#about" class="btn">Learn More</a>
+  <section class="hero">
+    <h1>Clarity in an Automated World</h1>
+    <p>Helping businesses and creators navigate AI with confidence, integrity, and simplicity.</p>
   </section>
 
-  <!-- About Section -->
-  <section id="about">
-    <h2>About SereneAI</h2>
-    <p>At SereneAI, we help businesses and creators navigate AI with clarity, integrity, and tailored guidance—making automation accessible, effective, and human-first.</p>
+  <section id="about" class="section">
+    <h2>About Us</h2>
+    <p>SereneAI LTD is a consulting company that helps businesses and digital creators understand and implement artificial intelligence and automation in a way that feels calm, transparent, and effective. We provide honest, tailored guidance that fits your unique needs—no hype, just clarity.</p>
   </section>
 
-  <!-- Services Section -->
-  <section id="services">
+  <section id="services" class="section">
     <h2>Our Services</h2>
-    <div class="services-container">
-      <div class="service">
-        <div class="service-icon">🤖</div>
-        <h3>AI Strategy & Roadmapping</h3>
-        <p>Plan your AI journey with a clear roadmap tailored to your business goals.</p>
+    <div class="icons-row">
+      <div class="icon-card">
+        <img src="https://img.icons8.com/clouds/100/strategy.png" alt="Strategy">
+        <p>AI Strategy & Roadmapping</p>
       </div>
-      <div class="service">
-        <div class="service-icon">🔍</div>
-        <h3>Automation Audits</h3>
-        <p>Assess your current automation processes and identify improvement opportunities.</p>
+      <div class="icon-card">
+        <img src="https://img.icons8.com/clouds/100/settings.png" alt="Audit">
+        <p>Automation Audits</p>
       </div>
-      <div class="service">
-        <div class="service-icon">💡</div>
-        <h3>Tool Recommendations</h3>
-        <p>Find the best AI tools for your needs with our expert recommendations.</p>
+      <div class="icon-card">
+        <img src="https://img.icons8.com/clouds/100/combo-chart.png" alt="Tools">
+        <p>Tool Recommendations & Setup</p>
       </div>
-      <div class="service">
-        <div class="service-icon">⚖️</div>
-        <h3>Ethical AI Consulting</h3>
-        <p>Ensure your AI implementations are ethical, transparent, and fair.</p>
+      <div class="icon-card">
+        <img src="https://img.icons8.com/clouds/100/law.png" alt="Ethical AI">
+        <p>Ethical AI Consulting</p>
       </div>
-      <div class="service">
-        <div class="service-icon">🧑‍🏫</div>
-        <h3>1:1 Coaching</h3>
-        <p>Get personalized coaching to help you master AI in your business.</p>
+      <div class="icon-card">
+        <img src="https://img.icons8.com/clouds/100/training.png" alt="Coaching">
+        <p>1:1 Coaching</p>
       </div>
     </div>
   </section>
 
-  <!-- Photo Section -->
-  <section id="photo-section">
-    <img src="path/to/your-image.jpg" alt="SereneAI Team" />
+  <section class="photo-section">
+    <h2>How We Work</h2>
+    <p>We combine thoughtful design, strategic insight, and a human-first mindset to guide your AI journey.</p>
+    <img src="https://images.unsplash.com/photo-1531497865146-5f1f1a1a9e53?auto=format&fit=crop&w=1200&q=80" alt="Team working with AI tools">
   </section>
 
-  <!-- Contact Section -->
-  <section id="contact">
+  <section id="contact" class="section">
     <h2>Contact Us</h2>
-    <p>Ready to get started? Reach out to learn more about how we can help you navigate AI with confidence.</p>
-    <a href="mailto:contact@sereneai.com" class="btn">Contact Us</a>
+    <p>If you're ready to make AI work for you, let's connect. Fill out the form below to start a conversation.</p>
+    <div class="cta">
+      <button>Book a Consultation</button>
+    </div>
   </section>
 
-  <!-- Footer -->
   <footer>
-    <p>SereneAI &copy; 2025 | All Rights Reserved</p>
+    <p>&copy; 2025 SereneAI LTD. All rights reserved.</p>
   </footer>
-
 </body>
 </html>
