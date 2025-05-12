@@ -41,11 +41,6 @@
       align-items: center;
     }
 
-    .logo img {
-      height: 40px;
-      margin-right: 1rem;
-    }
-
     .logo strong {
       font-family: 'Montserrat', sans-serif;
       font-weight: 600;
@@ -65,6 +60,18 @@
       color: var(--teal);
     }
 
+    .hero {
+      padding: 6rem 2rem 4rem;
+      background: linear-gradient(120deg, var(--alt-light), var(--white));
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-family: 'Montserrat', sans-serif;
+      margin-bottom: 1rem;
+    }
+
     .contact-section {
       background-color: var(--white);
       padding: 4rem 2rem;
@@ -73,7 +80,7 @@
       border-radius: 10px;
       box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
       font-family: 'Open Sans', sans-serif;
-      animation: fadeInUp 1.2s ease;
+      margin: 0 auto;
     }
 
     .contact-section h2 {
@@ -83,18 +90,6 @@
       color: var(--teal);
       text-transform: uppercase;
       margin-bottom: 1rem;
-    }
-
-    .section-intro {
-      color: var(--dark-gray);
-      font-size: 1.1rem;
-      margin-bottom: 2rem;
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
     }
 
     .form-group label {
@@ -128,10 +123,6 @@
       resize: vertical;
     }
 
-    .cta {
-      text-align: left;
-    }
-
     button {
       background-color: var(--teal);
       color: var(--white);
@@ -148,15 +139,8 @@
     button:hover {
       background-color: #23876f;
     }
-
-    /* Animations */
-    @keyframes fadeInUp {
-      0% { opacity: 0; transform: translateY(20px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
   </style>
 </head>
-
 <body>
   <header>
     <div class="logo">
@@ -169,10 +153,15 @@
     </nav>
   </header>
 
+  <section class="hero">
+    <h1>Clarity in an Automated World</h1>
+    <p>Helping businesses and creators navigate AI with confidence, integrity, and simplicity.</p>
+  </section>
+
   <section id="contact" class="contact-section">
     <h2>Contact Us</h2>
-    <p class="section-intro">If you're ready to make AI work for you, let's connect. Fill out the form below to start a conversation.</p>
-    <form id="contact-form">
+    <p>If you're ready to make AI work for you, let's connect. Fill out the form below to start a conversation.</p>
+    <form id="contact-form" action="https://script.google.com/macros/s/AKfycbyaWczYzafYxsiqHyKufetQw-PtKhJ33QGNKCVpx_e_iZHXmFGBKEuWbIHLY4oOrY4X/exec" method="POST" novalidate>
       <div class="form-group">
         <label for="name">Your Name</label>
         <input type="text" id="name" name="name" placeholder="Jane Doe" required />
@@ -185,9 +174,7 @@
         <label for="question">Your Question</label>
         <textarea id="question" name="question" placeholder="What would you like to know?" required></textarea>
       </div>
-      <div class="cta">
-        <button type="submit">Submit</button>
-      </div>
+      <button type="submit">Submit</button>
     </form>
   </section>
 
@@ -196,41 +183,15 @@
   </footer>
 
   <script>
-    // Add the contact form submission functionality here
     document.getElementById('contact-form').addEventListener('submit', function(e) {
-      e.preventDefault();
+      const contactField = document.getElementById('contact').value.trim();
+      const emailPattern = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
+      const phonePattern = /^[\\d\\s\\+\\-\\(\\)]+$/;
 
-      const name = document.getElementById('name').value;
-      const contact = document.getElementById('contact').value;
-      const question = document.getElementById('question').value;
-
-      // Prepare the data to send to Google Apps Script
-      const data = {
-        name: name,
-        contact: contact,
-        question: question
-      };
-
-      // Define the Google Apps Script URL
-      const url = 'https://script.google.com/macros/s/AKfycbyaWczYzafYxsiqHyKufetQw-PtKhJ33QGNKCVpx_e_iZHXmFGBKEuWbIHLY4oOrY4X/exec';
-
-      // Send the data using fetch API
-      fetch(url, {
-        method: 'POST',
-        body: new URLSearchParams(data)
-      })
-      .then(response => {
-        if (response.ok) {
-          alert('Your message has been sent!');
-          // Reset the form fields
-          document.getElementById('contact-form').reset();
-        } else {
-          alert('There was an error sending your message. Please try again later.');
-        }
-      })
-      .catch(error => {
-        alert('Error: ' + error);
-      });
+      if (!emailPattern.test(contactField) && !phonePattern.test(contactField)) {
+        alert("Please enter a valid email or phone number.");
+        e.preventDefault();
+      }
     });
   </script>
 </body>
