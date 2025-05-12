@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SereneAI LTD</title>
 
+  <!-- SEO -->
+  <meta name="description" content="SereneAI LTD helps businesses and creators navigate AI confidently and ethically.">
+  <meta name="keywords" content="AI consulting, ethical AI, automation, digital transformation, coaching">
+  <meta name="author" content="SereneAI LTD">
+
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Open+Sans:wght@400&family=Raleway:ital@1&display=swap" rel="stylesheet">
 
@@ -34,6 +39,7 @@
       align-items: center;
       border-bottom: 2px solid var(--teal);
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      position: relative;
     }
 
     .logo {
@@ -180,7 +186,6 @@
       animation: fadeIn 2s ease-in-out;
     }
 
-    /* Contact Section (included new version) */
     .contact-section {
       background-color: var(--white);
       padding: 4rem 2rem;
@@ -285,6 +290,44 @@
       0% { opacity: 0; transform: translateX(-30px); }
       100% { opacity: 1; transform: translateX(0); }
     }
+
+    /* Mobile Nav */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .hamburger span {
+      height: 3px;
+      background: var(--navy);
+      margin: 5px 0;
+      width: 25px;
+      border-radius: 2px;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+        flex-direction: column;
+        gap: 1rem;
+        background: var(--white);
+        position: absolute;
+        top: 70px;
+        right: 2rem;
+        padding: 1rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+      }
+
+      nav.active {
+        display: flex;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+    }
   </style>
 </head>
 
@@ -294,7 +337,12 @@
       <img src="your-logo-url.png" alt="SereneAI Logo" />
       <strong>SereneAI LTD</strong>
     </div>
-    <nav>
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <nav id="nav-links">
       <a href="#about">About</a>
       <a href="#services">Services</a>
       <a href="#contact">Contact</a>
@@ -315,23 +363,23 @@
     <h2>Our Services</h2>
     <div class="icons-row">
       <div class="icon-card">
-        <img src="https://img.icons8.com/clouds/100/strategy.png" alt="Strategy" />
+        <img src="https://img.icons8.com/clouds/100/strategy.png" alt="Strategy" loading="lazy" />
         <p>AI Strategy & Roadmapping</p>
       </div>
       <div class="icon-card">
-        <img src="https://img.icons8.com/clouds/100/settings.png" alt="Audit" />
+        <img src="https://img.icons8.com/clouds/100/settings.png" alt="Audit" loading="lazy" />
         <p>Automation Audits</p>
       </div>
       <div class="icon-card">
-        <img src="https://img.icons8.com/clouds/100/combo-chart.png" alt="Tools" />
+        <img src="https://img.icons8.com/clouds/100/combo-chart.png" alt="Tools" loading="lazy" />
         <p>Tool Recommendations & Setup</p>
       </div>
       <div class="icon-card">
-        <img src="https://img.icons8.com/clouds/100/law.png" alt="Ethical AI" />
+        <img src="https://img.icons8.com/clouds/100/law.png" alt="Ethical AI" loading="lazy" />
         <p>Ethical AI Consulting</p>
       </div>
       <div class="icon-card">
-        <img src="https://img.icons8.com/clouds/100/training.png" alt="Coaching" />
+        <img src="https://img.icons8.com/clouds/100/training.png" alt="Coaching" loading="lazy" />
         <p>1:1 Coaching</p>
       </div>
     </div>
@@ -340,7 +388,8 @@
   <section class="photo-section">
     <h2>How We Work</h2>
     <p>We combine thoughtful design, strategic insight, and a human-first mindset to guide your AI journey.</p>
-    <img src="https://images.unsplash.com/photo-1531497865146-5f1f1a1a9e53?auto=format&fit=crop&w=1200&q=80" alt="Team working with AI tools" />
+    <img src="https://images.unsplash.com/photo-1531497865146-5f1f1a1a9e53?auto=format&fit=crop&w=1200&q=80"
+         alt="Team working with AI tools" loading="lazy" />
   </section>
 
   <section id="contact" class="contact-section">
@@ -349,15 +398,15 @@
     <form id="contact-form" action="your-backend-endpoint" method="POST" novalidate>
       <div class="form-group">
         <label for="name">Your Name</label>
-        <input type="text" id="name" name="name" placeholder="Jane Doe" required />
+        <input type="text" id="name" name="name" placeholder="Jane Doe" required autocomplete="name" aria-label="Your name" />
       </div>
       <div class="form-group">
         <label for="contact">Your Contact (Email or Phone)</label>
-        <input type="text" id="contact" name="contact" placeholder="jane@example.com or +1 555-123-4567" required />
+        <input type="text" id="contact" name="contact" placeholder="jane@example.com or +1 555-123-4567" required autocomplete="email" aria-label="Your contact" />
       </div>
       <div class="form-group">
         <label for="question">Your Question</label>
-        <textarea id="question" name="question" placeholder="What would you like to know?" required></textarea>
+        <textarea id="question" name="question" placeholder="What would you like to know?" required aria-label="Your question"></textarea>
       </div>
       <div class="cta">
         <button type="submit">Submit</button>
@@ -370,10 +419,19 @@
   </footer>
 
   <script>
+    // Mobile nav toggle
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+    // Form validation
     document.getElementById('contact-form').addEventListener('submit', function(e) {
       const contactField = document.getElementById('contact').value.trim();
-      const emailPattern = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
-      const phonePattern = /^[\\d\\s\\+\\-\\(\\)]+$/;
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const phonePattern = /^[\d\s\+\-\(\)]+$/;
 
       if (!emailPattern.test(contactField) && !phonePattern.test(contactField)) {
         alert("Please enter a valid email or phone number.");
