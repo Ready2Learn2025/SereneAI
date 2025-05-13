@@ -37,20 +37,10 @@
     }
 
     .logo {
-      display: flex;
-      align-items: center;
-    }
-
-    .logo img {
-      height: 40px;
-      margin-right: 1rem;
-      width: auto;
-    }
-
-    .logo strong {
       font-family: 'Montserrat', sans-serif;
       font-weight: 600;
       color: var(--navy);
+      font-size: 1.2rem;
     }
 
     nav a {
@@ -130,10 +120,6 @@
     .icon-card img {
       height: 60px;
       margin-bottom: 1rem;
-    }
-
-    .icon-card p {
-      margin: 0;
     }
 
     ul {
@@ -286,23 +272,19 @@
       0% { opacity: 0; transform: translateX(-30px); }
       100% { opacity: 1; transform: translateX(0); }
     }
-
-    /* Dark-mode tweak for logo on dark header backgrounds (optional) */
-    @media (prefers-color-scheme: dark) {
-      header {
-        background: var(--navy);
-      }
-      .logo img {
-        filter: brightness(1.1) drop-shadow(0 0 4px rgba(0,0,0,.6));
-      }
-    }
   </style>
 </head>
 
 <body>
   <header>
-    <div class="logo">
-      <!-- Responsive logo -->
-      <img
-        src="images/sereneai-logo.png"
-        srcset="images/sereneai-logo.png 1x, images/sereneai-logo
+    <!-- Logo removed as requested -->
+    <div class="logo">SereneAI LTD</div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Cl
