@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SereneAI LTD</title>
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Open+Sans:wght@400&family=Raleway:ital@1&display=swap" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Open+Sans:wght@400&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -18,44 +18,49 @@
       --white: #FFFFFF;
     }
 
+    /* -------- Base styles -------- */
+    * { box-sizing: border-box; }
+
     body {
       margin: 0;
       font-family: 'Open Sans', sans-serif;
-      background-color: var(--light-gray);
+      background: var(--light-gray);
       color: var(--navy);
       line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
     }
 
+    a { color: inherit; }
+
+    /* -------- Header -------- */
     header {
       background: var(--white);
-      padding: 2rem;
+      padding: 1.75rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
       border-bottom: 2px solid var(--teal);
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 2px 4px rgba(0,0,0,.05);
     }
 
     .logo {
       font-family: 'Montserrat', sans-serif;
       font-weight: 600;
-      color: var(--navy);
-      font-size: 1.2rem;
+      font-size: 1.25rem;
+      letter-spacing: .5px;
     }
 
     nav a {
-      margin: 0 1rem;
+      margin-left: 1.5rem;
       text-decoration: none;
-      color: var(--navy);
-      font-weight: 500;
       font-family: 'Montserrat', sans-serif;
-      transition: color 0.3s;
+      font-weight: 500;
+      transition: color .3s;
     }
 
-    nav a:hover {
-      color: var(--teal);
-    }
+    nav a:hover { color: var(--teal); }
 
+    /* -------- Hero -------- */
     .hero {
       padding: 6rem 2rem 4rem;
       background: linear-gradient(120deg, var(--alt-light), var(--white));
@@ -64,26 +69,27 @@
     }
 
     .hero h1 {
-      font-size: 3rem;
       font-family: 'Montserrat', sans-serif;
-      margin-bottom: 1rem;
+      font-size: 3rem;
+      margin: 0 0 1rem;
       animation: fadeInDown 1s ease-in-out;
     }
 
     .hero p {
-      font-size: 1.4rem;
+      font-size: 1.35rem;
       color: var(--dark-gray);
       max-width: 700px;
       margin: 0 auto;
       animation: fadeIn 2s ease-in-out;
     }
 
+    /* -------- Sections -------- */
     .section {
       padding: 4rem 2rem;
       max-width: 1000px;
       margin: 0 auto;
       text-align: center;
-      animation: fadeInUp 1.5s ease-in-out;
+      animation: fadeInUp 1.25s ease-in-out;
     }
 
     .section h2 {
@@ -93,12 +99,9 @@
       margin-bottom: 1rem;
     }
 
-    .section p,
-    .section ul {
-      font-size: 1.1rem;
-      color: var(--dark-gray);
-    }
+    .section p,.section ul { font-size: 1.1rem; color: var(--dark-gray); }
 
+    /* -------- Services icons -------- */
     .icons-row {
       display: flex;
       flex-wrap: wrap;
@@ -111,173 +114,122 @@
       background: var(--white);
       padding: 1.5rem;
       border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 2px 8px rgba(0,0,0,.08);
       max-width: 200px;
       text-align: center;
-      animation: slideIn 1.5s ease-in-out;
+      animation: slideIn 1s ease-in-out;
     }
 
-    .icon-card img {
-      height: 60px;
-      margin-bottom: 1rem;
-    }
+    .icon-card img { height: 60px; margin-bottom: 1rem; }
+    .icon-card p  { margin: 0; }
 
-    ul {
-      list-style: none;
-      padding: 0;
-    }
+    /* Tick list style */
+    ul { list-style: none; padding: 0; }
+    ul li { padding: .5rem 0; position: relative; }
+    ul li::before { content: '\2713'; color: var(--teal); font-weight: bold; margin-right: .5rem; }
 
-    ul li {
-      padding: 0.5rem 0;
-      position: relative;
-    }
-
-    ul li::before {
-      content: '\2713';
-      color: var(--teal);
-      font-weight: bold;
-      margin-right: 0.5rem;
-    }
-
+    /* -------- Photo section -------- */
     .photo-section {
       background: var(--white);
       padding: 4rem 2rem;
       text-align: center;
-      animation: fadeInUp 2s ease-in-out;
+      animation: fadeInUp 1.25s ease-in-out;
     }
 
     .photo-section img {
       max-width: 100%;
       border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 4px 10px rgba(0,0,0,.05);
       margin-top: 2rem;
-      transition: transform 0.4s ease;
+      transition: transform .4s ease;
+    }
+    .photo-section img:hover { transform: scale(1.03); }
+
+    /* -------- Contact section -------- */
+    .contact-section {
+      background: var(--white);
+      padding: 4rem 2rem;
+      margin-top: 4rem;
+      max-width: 700px;
+      border-radius: 10px;
+      box-shadow: 0 4px 16px rgba(0,0,0,.05);
+      animation: fadeInUp 1.25s ease;
     }
 
-    .photo-section img:hover {
-      transform: scale(1.03);
+    .contact-section h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2rem;
+      color: var(--teal);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
     }
 
+    .section-intro { color: var(--dark-gray); font-size: 1.1rem; margin-bottom: 2rem; }
+
+    form { display: flex; flex-direction: column; gap: 1.5rem; }
+
+    .form-group label {
+      display: block;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      margin-bottom: .4rem;
+      color: var(--navy);
+    }
+
+    input[type="text"], textarea {
+      width: 100%;
+      padding: .75rem 1rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      background: var(--alt-light);
+      transition: border-color .3s;
+      font-family: 'Open Sans', sans-serif;
+    }
+    input[type="text"]:focus, textarea:focus { outline: none; border-color: var(--teal); }
+    textarea { height: 140px; resize: vertical; }
+
+    .cta { text-align: left; }
+    button {
+      background: var(--teal);
+      color: var(--white);
+      border: none;
+      padding: 1rem 2.5rem;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: 1.1rem;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background .3s;
+    }
+    button:hover { background: #23876f; }
+
+    /* -------- Footer -------- */
     footer {
       background: var(--navy);
       color: var(--white);
       padding: 2rem;
       text-align: center;
       margin-top: 4rem;
-      animation: fadeIn 2s ease-in-out;
+      animation: fadeIn 1.25s ease-in-out;
     }
 
-    /* Contact Section */
-    .contact-section {
-      background-color: var(--white);
-      padding: 4rem 2rem;
-      margin-top: 4rem;
-      max-width: 700px;
-      border-radius: 10px;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
-      font-family: 'Open Sans', sans-serif;
-      animation: fadeInUp 1.2s ease;
-    }
+    /* -------- Animations -------- */
+    @keyframes fadeInDown { 0%{opacity:0;transform:translateY(-20px);}100%{opacity:1;transform:translateY(0);} }
+    @keyframes fadeIn { from{opacity:0;} to{opacity:1;} }
+    @keyframes fadeInUp { 0%{opacity:0;transform:translateY(20px);}100%{opacity:1;transform:translateY(0);} }
+    @keyframes slideIn { 0%{opacity:0;transform:translateX(-30px);}100%{opacity:1;transform:translateX(0);} }
 
-    .contact-section h2 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 2rem;
-      font-weight: 600;
-      color: var(--teal);
-      text-transform: uppercase;
-      margin-bottom: 1rem;
-    }
-
-    .section-intro {
-      color: var(--dark-gray);
-      font-size: 1.1rem;
-      margin-bottom: 2rem;
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-
-    .form-group label {
-      font-weight: 600;
-      font-family: 'Montserrat', sans-serif;
-      margin-bottom: 0.5rem;
-      display: block;
-      color: var(--navy);
-    }
-
-    input[type="text"],
-    textarea {
-      width: 100%;
-      padding: 0.75rem 1rem;
-      font-size: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      background-color: var(--alt-light);
-      font-family: 'Open Sans', sans-serif;
-      transition: border-color 0.3s ease;
-    }
-
-    input[type="text"]:focus,
-    textarea:focus {
-      outline: none;
-      border-color: var(--teal);
-    }
-
-    textarea {
-      height: 140px;
-      resize: vertical;
-    }
-
-    .cta {
-      text-align: left;
-    }
-
-    button {
-      background-color: var(--teal);
-      color: var(--white);
-      border: none;
-      padding: 1rem 2.5rem;
-      font-size: 1.1rem;
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 600;
-      border-radius: 30px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    button:hover {
-      background-color: #23876f;
-    }
-
-    /* Animations */
-    @keyframes fadeInDown {
-      0% { opacity: 0; transform: translateY(-20px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeInUp {
-      0% { opacity: 0; transform: translateY(20px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    @keyframes slideIn {
-      0% { opacity: 0; transform: translateX(-30px); }
-      100% { opacity: 1; transform: translateX(0); }
+    /* Dark-mode header tweak (optional) */
+    @media (prefers-color-scheme: dark) {
+      header { background: var(--navy); }
     }
   </style>
 </head>
 
 <body>
+  <!-- ===== Header ===== -->
   <header>
-    <!-- Logo removed as requested -->
     <div class="logo">SereneAI LTD</div>
     <nav>
       <a href="#about">About</a>
@@ -286,5 +238,91 @@
     </nav>
   </header>
 
+  <!-- ===== Hero ===== -->
   <section class="hero">
-    <h1>Cl
+    <h1>Clarity in an Automated World</h1>
+    <p>Helping businesses and creators navigate AI with confidence, integrity, and simplicity.</p>
+  </section>
+
+  <!-- ===== About ===== -->
+  <section id="about" class="section">
+    <h2>About Us</h2>
+    <p>SereneAI LTD is a consulting company that helps businesses and digital creators understand and implement artificial intelligence and automation in a way that feels calm, transparent, and effective. We provide honest, tailored guidance that fits your unique needs—no hype, just clarity.</p>
+  </section>
+
+  <!-- ===== Services ===== -->
+  <section id="services" class="section">
+    <h2>Our Services</h2>
+    <div class="icons-row">
+      <div class="icon-card">
+        <img src="https://img.icons8.com/clouds/100/strategy.png" alt="Strategy" />
+        <p>AI Strategy &amp; Roadmapping</p>
+      </div>
+      <div class="icon-card">
+        <img src="https://img.icons8.com/clouds/100/settings.png" alt="Audit" />
+        <p>Automation Audits</p>
+      </div>
+      <div class="icon-card">
+        <img src="https://img.icons8.com/clouds/100/combo-chart.png" alt="Tools" />
+        <p>Tool Recommendations &amp; Setup</p>
+      </div>
+      <div class="icon-card">
+        <img src="https://img.icons8.com/clouds/100/law.png" alt="Ethical AI" />
+        <p>Ethical AI Consulting</p>
+      </div>
+      <div class="icon-card">
+        <img src="https://img.icons8.com/clouds/100/training.png" alt="Coaching" />
+        <p>1:1 Coaching</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Photo / How We Work ===== -->
+  <section class="photo-section">
+    <h2>How We Work</h2>
+    <p>We combine thoughtful design, strategic insight, and a human-first mindset to guide your AI journey.</p>
+    <img src="https://images.unsplash.com/photo-1531497865146-5f1f1a1a9e53?auto=format&fit=crop&w=1200&q=80" alt="Team working with AI tools" />
+  </section>
+
+  <!-- ===== Contact ===== -->
+  <section id="contact" class="contact-section">
+    <h2>Contact Us</h2>
+    <p class="section-intro">If you're ready to make AI work for you, let's connect. Fill out the form below to start a conversation.</p>
+
+    <form id="contact-form" action="your-backend-endpoint" method="POST" novalidate>
+      <div class="form-group">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="name" placeholder="Jane Doe" required />
+      </div>
+      <div class="form-group">
+        <label for="contact">Your Contact (Email or Phone)</label>
+        <input type="text" id="contact" name="contact" placeholder="jane@example.com or +1 555-123-4567" required />
+      </div>
+      <div class="form-group">
+        <label for="question">Your Question</label>
+        <textarea id="question" name="question" placeholder="What would you like to know?" required></textarea>
+      </div>
+      <div class="cta"><button type="submit">Submit</button></div>
+    </form>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer>
+    <p>&copy; 2025 SereneAI LTD. All rights reserved.</p>
+  </footer>
+
+  <!-- ===== Client-side validation ===== -->
+  <script>
+    document.getElementById('contact-form').addEventListener('submit', function (e) {
+      const contactValue = document.getElementById('contact').value.trim();
+      const emailPattern  = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const phonePattern  = /^[\d\s\+\-\(\)]+$/;
+
+      if (!emailPattern.test(contactValue) && !phonePattern.test(contactValue)) {
+        alert('Please enter a valid email address or phone number.');
+        e.preventDefault();
+      }
+    });
+  </script>
+</body>
+</html>
