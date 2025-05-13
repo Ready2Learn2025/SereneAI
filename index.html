@@ -14,8 +14,7 @@
         content="Helping businesses and creators navigate AI with confidence, integrity, and simplicity.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://sereneai.co.uk/">
-  <!-- Supply your own cover image if desired -->
-  <meta property="og:image" content="https://sereneai.co.uk/og-cover.jpg">
+  <meta property="og:image" content="https://sereneai.co.uk/og-cover.jpg"><!-- replace if you wish -->
   <meta name="twitter:card" content="summary_large_image">
 
   <!-- Canonical & favicon -->
@@ -114,11 +113,22 @@
     @keyframes fadeInUp{0%{opacity:0;transform:translateY(20px);}100%{opacity:1;transform:translateY(0);}}
     @keyframes slideIn{0%{opacity:0;transform:translateX(-30px);}100%{opacity:1;transform:translateX(0);}}
 
+    /* reduced-motion */
     @media(prefers-reduced-motion:reduce){
       *,*::before,*::after{animation:none!important;transition:none!important;}
     }
-    @media(prefers-color-scheme:dark){
-      header{background:var(--navy);}
+
+    /* === DARK-MODE HEADER FIX === */
+    @media (prefers-color-scheme: dark) {
+      /* keep navy background */
+      header { background: var(--navy); }
+
+      /* make logo + nav links readable */
+      header .logo,
+      header nav a { color: var(--white); }
+
+      /* distinct hover colour */
+      header nav a:hover { color: var(--teal); }
     }
   </style>
 </head>
@@ -156,7 +166,6 @@
     <section id="services" class="section">
       <h2>Our Services</h2>
       <div class="icons-row">
-        <!-- 5 SVG icon cards (unchanged) -->
         <!-- Strategy -->
         <div class="icon-card">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 22H5v-2h1v-7.586l-1.707-1.707A.997.997 0 014 10V5a1 1 0 011-1h1V3a1 1 0 112 0v1h8V3a1 1 0 112 0v1h1a1 1 0 011 1v5a.997.997 0 01-.293.707L18 12.414V20h1v2zM8 8a2 2 0 100-4 2 2 0 000 4z"/></svg>
