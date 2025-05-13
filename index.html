@@ -14,7 +14,7 @@
         content="Helping businesses and creators navigate AI with confidence, integrity, and simplicity.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://sereneai.co.uk/">
-  <meta property="og:image" content="https://sereneai.co.uk/og-cover.jpg"><!-- replace if you wish -->
+  <meta property="og:image" content="https://sereneai.co.uk/og-cover.jpg"><!-- replace -->
   <meta name="twitter:card" content="summary_large_image">
 
   <!-- Canonical & favicon -->
@@ -82,9 +82,18 @@
     .section h2{font-family:'Montserrat',sans-serif;font-size:2rem;color:var(--teal);margin-bottom:1rem;}
     .section p{font-size:1.1rem;color:var(--dark-gray);}
 
-    /* ===== Services icons ===== */
-    .icons-row{display:flex;flex-wrap:wrap;justify-content:center;gap:2rem;margin-top:2rem;}
-    .icon-card{background:var(--white);padding:1.5rem;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.08);max-width:200px;text-align:center;animation:slideIn 1s ease-in-out;}
+    /* ===== Services icons (GRID) ===== */
+    .icons-row{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+      gap:2rem;
+      justify-items:center;
+      margin-top:2rem;
+    }
+    .icon-card{
+      background:var(--white);padding:1.5rem;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.08);
+      width:100%;max-width:180px;text-align:center;animation:slideIn 1s ease-in-out;
+    }
     .icon-card svg{height:60px;margin-bottom:1rem;fill:var(--teal);}
     .icon-card p{margin:0;}
 
@@ -113,22 +122,16 @@
     @keyframes fadeInUp{0%{opacity:0;transform:translateY(20px);}100%{opacity:1;transform:translateY(0);}}
     @keyframes slideIn{0%{opacity:0;transform:translateX(-30px);}100%{opacity:1;transform:translateX(0);}}
 
-    /* reduced-motion */
     @media(prefers-reduced-motion:reduce){
       *,*::before,*::after{animation:none!important;transition:none!important;}
     }
 
-    /* === DARK-MODE HEADER FIX === */
+    /* Dark-mode header fix */
     @media (prefers-color-scheme: dark) {
-      /* keep navy background */
-      header { background: var(--navy); }
-
-      /* make logo + nav links readable */
+      header{background:var(--navy);}
       header .logo,
-      header nav a { color: var(--white); }
-
-      /* distinct hover colour */
-      header nav a:hover { color: var(--teal); }
+      header nav a{color:var(--white);}
+      header nav a:hover{color:var(--teal);}
     }
   </style>
 </head>
