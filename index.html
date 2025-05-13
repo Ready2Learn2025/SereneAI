@@ -44,6 +44,7 @@
     .logo img {
       height: 40px;
       margin-right: 1rem;
+      width: auto;
     }
 
     .logo strong {
@@ -180,7 +181,7 @@
       animation: fadeIn 2s ease-in-out;
     }
 
-    /* Contact Section (included new version) */
+    /* Contact Section */
     .contact-section {
       background-color: var(--white);
       padding: 4rem 2rem;
@@ -285,101 +286,23 @@
       0% { opacity: 0; transform: translateX(-30px); }
       100% { opacity: 1; transform: translateX(0); }
     }
+
+    /* Dark-mode tweak for logo on dark header backgrounds (optional) */
+    @media (prefers-color-scheme: dark) {
+      header {
+        background: var(--navy);
+      }
+      .logo img {
+        filter: brightness(1.1) drop-shadow(0 0 4px rgba(0,0,0,.6));
+      }
+    }
   </style>
 </head>
 
 <body>
   <header>
     <div class="logo">
-      <img src="your-logo-url.png" alt="SereneAI Logo" />
-      <strong>SereneAI LTD</strong>
-    </div>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#services">Services</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
-
-  <section class="hero">
-    <h1>Clarity in an Automated World</h1>
-    <p>Helping businesses and creators navigate AI with confidence, integrity, and simplicity.</p>
-  </section>
-
-  <section id="about" class="section">
-    <h2>About Us</h2>
-    <p>SereneAI LTD is a consulting company that helps businesses and digital creators understand and implement artificial intelligence and automation in a way that feels calm, transparent, and effective. We provide honest, tailored guidance that fits your unique needs—no hype, just clarity.</p>
-  </section>
-
-  <section id="services" class="section">
-    <h2>Our Services</h2>
-    <div class="icons-row">
-      <div class="icon-card">
-        <img src="https://img.icons8.com/clouds/100/strategy.png" alt="Strategy" />
-        <p>AI Strategy & Roadmapping</p>
-      </div>
-      <div class="icon-card">
-        <img src="https://img.icons8.com/clouds/100/settings.png" alt="Audit" />
-        <p>Automation Audits</p>
-      </div>
-      <div class="icon-card">
-        <img src="https://img.icons8.com/clouds/100/combo-chart.png" alt="Tools" />
-        <p>Tool Recommendations & Setup</p>
-      </div>
-      <div class="icon-card">
-        <img src="https://img.icons8.com/clouds/100/law.png" alt="Ethical AI" />
-        <p>Ethical AI Consulting</p>
-      </div>
-      <div class="icon-card">
-        <img src="https://img.icons8.com/clouds/100/training.png" alt="Coaching" />
-        <p>1:1 Coaching</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="photo-section">
-    <h2>How We Work</h2>
-    <p>We combine thoughtful design, strategic insight, and a human-first mindset to guide your AI journey.</p>
-    <img src="https://images.unsplash.com/photo-1531497865146-5f1f1a1a9e53?auto=format&fit=crop&w=1200&q=80" alt="Team working with AI tools" />
-  </section>
-
-  <section id="contact" class="contact-section">
-    <h2>Contact Us</h2>
-    <p class="section-intro">If you're ready to make AI work for you, let's connect. Fill out the form below to start a conversation.</p>
-    <form id="contact-form" action="your-backend-endpoint" method="POST" novalidate>
-      <div class="form-group">
-        <label for="name">Your Name</label>
-        <input type="text" id="name" name="name" placeholder="Jane Doe" required />
-      </div>
-      <div class="form-group">
-        <label for="contact">Your Contact (Email or Phone)</label>
-        <input type="text" id="contact" name="contact" placeholder="jane@example.com or +1 555-123-4567" required />
-      </div>
-      <div class="form-group">
-        <label for="question">Your Question</label>
-        <textarea id="question" name="question" placeholder="What would you like to know?" required></textarea>
-      </div>
-      <div class="cta">
-        <button type="submit">Submit</button>
-      </div>
-    </form>
-  </section>
-
-  <footer>
-    <p>&copy; 2025 SereneAI LTD. All rights reserved.</p>
-  </footer>
-
-  <script>
-    document.getElementById('contact-form').addEventListener('submit', function(e) {
-      const contactField = document.getElementById('contact').value.trim();
-      const emailPattern = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
-      const phonePattern = /^[\\d\\s\\+\\-\\(\\)]+$/;
-
-      if (!emailPattern.test(contactField) && !phonePattern.test(contactField)) {
-        alert("Please enter a valid email or phone number.");
-        e.preventDefault();
-      }
-    });
-  </script>
-</body>
-</html>
+      <!-- Responsive logo -->
+      <img
+        src="images/sereneai-logo.png"
+        srcset="images/sereneai-logo.png 1x, images/sereneai-logo
