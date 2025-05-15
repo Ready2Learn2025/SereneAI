@@ -253,5 +253,49 @@
       });
     })();
   </script>
+  <div id="cookie-banner" style="display:none; position:fixed; bottom:0; left:0; right:0; background-color:#f8f8f8; color:#333; padding:1rem 2rem; text-align:center; box-shadow: 0 -2px 5px rgba(0,0,0,0.1); z-index:1000;">
+    <p style="margin-bottom: 10px;">
+        This website uses cookies to enhance your experience. By continuing to browse, you consent to our use of cookies as described in our <a href="your-privacy-policy-url" style="color:#1D8A73; text-decoration:underline;">Privacy Policy</a>.
+    </p>
+    <button id="accept-cookies" style="background-color:#1D8A73; color:#fff; border:none; padding:0.75rem 1.5rem; border-radius:5px; cursor:pointer; font-size:1rem;">Accept</button>
+</div>
+
+<script>
+    // JavaScript for cookie consent banner
+    const cookieBanner = document.getElementById('cookie-banner');
+    const acceptCookiesButton = document.getElementById('accept-cookies');
+    const cookieName = 'uk_gdpr_consent';
+    const cookieValue = 'accepted';
+    const cookieExpiryDays = 365;
+
+    function setCookie(name, value, days) {
+        const date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        const expires = "expires=" + date.toUTCString();
+        document.cookie = name + "=" + value + ";" + expires + ";path=/;SameSite=Strict";
+    }
+
+    function getCookie(name) {
+        const nameEQ = name + "=";
+        const ca = document.cookie.split(';');
+        for(let i = 0; i < ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+            if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+        }
+        return null;
+    }
+
+    window.onload = function() {
+        if (!getCookie(cookieName)) {
+            cookieBanner.style.display = 'block';
+        }
+    };
+
+    acceptCookiesButton.onclick = function() {
+        setCookie(cookieName, cookieValue, cookieExpiryDays);
+        cookieBanner.style.display = 'none';
+    };
+</script>
 </body>
 </html>
