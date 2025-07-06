@@ -225,111 +225,6 @@
         display:block;
     }
 
-    /* ===== Contact ===== */
-    .contact-section{
-        background:var(--white);
-        padding:5rem 2rem; /* Increased padding */
-        margin:4rem auto; /* Consistent margin */
-        max-width:800px; /* Wider max width */
-        border-radius:12px; /* More rounded corners */
-        box-shadow:0 6px 16px rgba(0,0,0,.05); /* Deeper shadow */
-        animation:fadeInUp 1.25s ease;
-    }
-    .contact-section h2{
-        font-family:'Montserrat',sans-serif;
-        font-size:2.5rem; /* Larger heading */
-        color:var(--teal);
-        text-transform:uppercase;
-        margin-bottom:1.5rem; /* Increased margin */
-        letter-spacing: 0.5px; /* Slight letter spacing */
-    }
-    .section-intro{
-        color:var(--dark-gray);
-        font-size:1.2rem; /* Slightly larger intro */
-        margin-bottom:2.5rem; /* Increased margin */
-        line-height: 1.8; /* Improved readability */
-    }
-    form{
-        display:flex;
-        flex-direction:column;
-        gap:2rem; /* Increased gap */
-    }
-    .form-group label{
-        display:block;
-        font-family:'Montserrat',sans-serif;
-        font-weight:600;
-        margin-bottom:.5rem; /* Increased margin */
-        color:var(--navy);
-        font-size: 1.1rem; /* Slightly larger label */
-    }
-    input[type="text"],textarea{
-        width:100%;
-        padding:1rem 1.25rem; /* Increased padding */
-        font-size:1.1rem; /* Slightly larger text */
-        border:1px solid #ccc;
-        border-radius:8px; /* More rounded corners */
-        background:var(--alt-light);
-        transition:border-color .3s;
-        font-family:'Open Sans',sans-serif;
-    }
-    input[type="text"]:focus,textarea:focus{
-        outline:none;
-        border-color:var(--teal);
-        box-shadow: 0 0 5px rgba(29, 138, 115, 0.5); /* Subtle focus shadow */
-    }
-    textarea{
-        height:160px; /* Increased height */
-        resize:vertical;
-    }
-    .cta{
-        text-align:left;
-        margin-top: 1rem; /* Added margin */
-    }
-    .primary-cta{
-        display:inline-block;
-        background:var(--teal);
-        color:var(--white);
-        padding:1.25rem 3rem;
-        border-radius:30px;
-        font-family:'Montserrat',sans-serif;
-        font-weight:600;
-        font-size:1.2rem;
-        transition:background .3s, transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-        margin-top:2rem;
-    }
-    .primary-cta:hover{
-        background:#16725D;
-        transform: translateY(-2px);
-        box-shadow:0 4px 8px rgba(22, 114, 93, 0.5);
-    }
-    button{
-        background:var(--teal);
-        color:var(--white);
-        border:none;
-        padding:1.25rem 3rem; /* Increased padding */
-        font-family:'Montserrat',sans-serif;
-        font-weight:600;
-        font-size:1.2rem; /* Larger font size */
-        border-radius:30px;
-        cursor:pointer;
-        transition:background .3s, transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Added transitions */
-    }
-    button:hover{
-        background:#16725D;
-        transform: translateY(-2px); /* Subtle lift on hover */
-        box-shadow: 0 4px 8px rgba(22, 114, 93, 0.5); /* Subtle hover shadow */
-    }
-    button:disabled {
-        background-color: #cccccc;
-        color: #666666;
-        cursor: not-allowed;
-    }
-
-    .error-msg{
-        color:#C0392B;
-        font-size:.95rem;
-        margin-top:-.75rem; /* Adjusted margin */
-    }
 
     /* ===== Footer ===== */
     footer{
@@ -404,28 +299,6 @@
         transform: translateY(-2px); /* Subtle hover effect */
     }
 
-    /* Sticky mobile CTA */
-    .mobile-cta{
-        display:none;
-        position:fixed;
-        bottom:1rem;
-        left:50%;
-        transform:translateX(-50%);
-        background:var(--teal);
-        color:var(--white);
-        padding:0.85rem 1.75rem;
-        border-radius:30px;
-        font-family:'Montserrat',sans-serif;
-        font-weight:600;
-        box-shadow:0 4px 8px rgba(0,0,0,0.2);
-        z-index:999;
-    }
-    .mobile-cta:hover{
-        background:#16725D;
-    }
-    @media(max-width:680px){
-        .mobile-cta{display:block;}
-    }
 
     /* ===== Chatbot Widget ===== */
     .chatbot-container{
@@ -496,7 +369,6 @@
             <a href="#about" aria-label="About section">About</a>
             <a href="#services" aria-label="Services section">Services</a>
             <a href="gpts.html" aria-label="SereneAI GPTs">GPTs</a>
-            <a href="#contact" aria-label="Contact section">Contact</a>
         </nav>
     </header>
 
@@ -504,7 +376,6 @@
         <section class="hero">
             <h1>AI Clarity for UK Businesses</h1>
             <p>SereneAI helps UK SMEs unlock the benefits of automation and AI with tailored guidance.</p>
-            <a class="primary-cta" href="#contact">Book a Free AI Audit</a>
         </section>
 
         <section id="about" class="section">
@@ -548,32 +419,6 @@
             </div>
         </section>
 
-        <section id="contact" class="contact-section">
-            <h2>Contact Us</h2>
-            <p class="section-intro">If you're ready to make AI work for you, let's connect. Fill out the form below to start a conversation.</p>
-
-            <form id="contact-form" name="contact" data-netlify="true">
-                <input type="hidden" name="form-name" value="contact">
-                <input type="text" name="_gotcha" style="display:none">
-
-                <div class="form-group">
-                    <label for="name">Your Name</label>
-                    <input type="text" id="name" name="name" placeholder="Jane Doe" aria-label="Your Name" aria-required="true" required />
-                    <div class="error-msg" id="err-name" aria-live="assertive"></div>
-                </div>
-                <div class="form-group">
-                    <label for="contact">Your Contact (Email or Phone)</label>
-                    <input type="text" id="contact" name="contact" placeholder="jane@example.com or +44 7700 900000" aria-label="Your Contact" aria-required="true" required />
-                    <div class="error-msg" id="err-contact" aria-live="assertive"></div>
-                </div>
-                <div class="form-group">
-                    <label for="question">Your Question</label>
-                    <textarea id="question" name="question" placeholder="What would you like to know?" aria-label="Your Question" aria-required="true" required></textarea>
-                    <div class="error-msg" id="err-question" aria-live="assertive"></div>
-                </div>
-                <div class="cta"><button type="submit">Submit</button></div>
-            </form>
-        </section>
 
         <section id="chatbot" class="section" aria-labelledby="chatbot-heading">
             <h2 id="chatbot-heading">Chat with Us</h2>
@@ -595,7 +440,6 @@
         <p>&copy; <span id="current-year">2025</span> SereneAI LTD. All rights reserved. <a href="privacy.html">Privacy Policy</a></p>
     </footer>
 
-    <a href="#contact" class="mobile-cta" aria-label="Jump to contact form">Message Us</a>
 
     <div id="cookie-banner">
         <p>
@@ -608,174 +452,6 @@
         // Dynamic year for footer
         document.getElementById('current-year').textContent = new Date().getFullYear();
 
-        // Client-side form validation and submission feedback
-        (function(){
-            const form = document.getElementById('contact-form');
-            const nameEl = document.getElementById('name');
-            const contactEl = document.getElementById('contact');
-            const questionEl = document.getElementById('question');
-            const errName = document.getElementById('err-name');
-            const errContact = document.getElementById('err-contact');
-            const errQuestion = document.getElementById('err-question');
-            const submitButton = form.querySelector('button[type="submit"]'); // Get the submit button
-
-            const emailPattern  = /^[^\\s@]+@[^\\s@]+\.[^\\s@]+$/;
-            const phonePattern  = /^[\d\s\+\-\(\)]+$/;
-
-            form.addEventListener('submit', function(e){
-                e.preventDefault(); // Prevent the default Netlify submission
-
-                let valid = true;
-                [errName,errContact,errQuestion].forEach(el=>el.textContent='');
-
-                if(!nameEl.value.trim()){
-                    errName.textContent='Please enter your name.';
-                    valid=false;
-                }
-                const contactVal = contactEl.value.trim();
-                if(!emailPattern.test(contactVal) && !phonePattern.test(contactVal)){
-                    errContact.textContent='Enter a valid email or phone number.';
-                    valid=false;
-                }
-                if(!questionEl.value.trim()){
-                    errQuestion.textContent='Please tell us something.';
-                    valid=false;
-                }
-
-                if(valid){
-                    // Disable the button and show a submitting message
-                    submitButton.textContent = 'Submitting...';
-                    submitButton.disabled = true;
-
-                    fetch("/", {
-                        method: "POST",
-                        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                        body: new URLSearchParams(new FormData(form)).toString(),
-                    })
-                    .then(() => {
-                        // Show success message and reset the form
-                        form.innerHTML = '<p style="color: green;">Thank you for your message! We\'ll get back to you soon.</p>';
-                        setTimeout(() => { // Reset after a short delay
-                            form.innerHTML = `
-                                <input type="hidden" name="contact-form">
-                                <input type="text" name="_gotcha" style="display:none">
-                                <div class="form-group">
-                                    <label for="name">Your Name</label>
-                                    <input type="text" id="name" name="name" placeholder="Jane Doe" aria-label="Your Name" required />
-                                <div class="error-msg" id="err-name" aria-live="assertive"></div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="contact">Your Contact (Email or Phone)</label>
-                                    <input type="text" id="contact" name="contact" placeholder="jane@example.com or +44 7700 900000" aria-label="Your Contact" required />
-                                    <div class="error-msg" id="err-contact" aria-live="assertive"></div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="question">Your Question</label>
-                                    <textarea id="question" name="question" placeholder="What would you like to know?" aria-label="Your Question" required></textarea>
-                                    <div class="error-msg" id="err-question" aria-live="assertive"></div>
-                                </div>
-                                <div class="cta"><button type="submit">Submit</button></div>
-                            `;
-                            // Re-attach the event listener after resetting the form
-                            const newForm = document.getElementById('contact-form');
-                            attachFormSubmitListener(newForm);
-                        }, 3000); // Adjust the delay as needed
-                    })
-                    .catch((error) => {
-                        // Show error message
-                        form.innerHTML = '<p style="color: red;">Oops! Something went wrong. Please try again later.</p>';
-                        console.error("Form submission error:", error);
-                        submitButton.textContent = 'Submit';
-                        submitButton.disabled = false;
-                    });
-                }
-            });
-
-            function attachFormSubmitListener(currentForm) {
-                currentForm.addEventListener('submit', function(e){
-                    e.preventDefault(); // Prevent the default Netlify submission
-
-                    let valid = true;
-                    const nameEl = currentForm.querySelector('#name');
-                    const contactEl = currentForm.querySelector('#contact');
-                    const questionEl = currentForm.querySelector('#question');
-                    const errName = currentForm.querySelector('#err-name');
-                    const errContact = currentForm.querySelector('#err-contact');
-                    const errQuestion = currentForm.querySelector('#err-question');
-                    const submitButton = currentForm.querySelector('button[type="submit"]');
-
-                    [errName,errContact,errQuestion].forEach(el=>el.textContent='');
-
-                    if(!nameEl.value.trim()){
-                        errName.textContent='Please enter your name.';
-                        valid=false;
-                    }
-                    const contactVal = contactEl.value.trim();
-                    if(!emailPattern.test(contactVal) && !phonePattern.test(contactVal)){
-                        errContact.textContent='Enter a valid email or phone number.';
-                        valid=false;
-                    }
-                    if(!questionEl.value.trim()){
-                        errQuestion.textContent='Please tell us something.';
-                        valid=false;
-                    }
-
-                    if(valid){
-                        // Disable the button and show a submitting message
-                        submitButton.textContent = 'Submitting...';
-                        submitButton.disabled = true;
-
-                        fetch("/", {
-                            method: "POST",
-                            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                            body: new URLSearchParams(new FormData(currentForm)).toString(),
-                        })
-                        .then(() => {
-                            // Show success message and reset the form
-                            currentForm.innerHTML = '<p style="color: green;">Thank you for your message! We\'ll get back to you soon.</p>';
-                            setTimeout(() => { // Reset after a short delay
-                                currentForm.innerHTML = `
-                                    <input type="hidden" name="contact-form">
-                                    <input type="text" name="_gotcha" style="display:none">
-                                    <div class="form-group">
-                                        <label for="name">Your Name</label>
-                                        <input type="text" id="name" name="name" placeholder="Jane Doe" aria-label="Your Name" required />
-                                        <div class="error-msg" id="err-name" aria-live="assertive"></div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="contact">Your Contact (Email or Phone)</label>
-                                        <input type="text" id="contact" name="contact" placeholder="jane@example.com or +44 7700 900000" aria-label="Your Contact" required />
-                                        <div class="error-msg" id="err-contact" aria-live="assertive"></div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="question">Your Question</label>
-                                        <textarea id="question" name="question" placeholder="What would you like to know?" aria-label="Your Question" required></textarea>
-                                        <div class="error-msg" id="err-question" aria-live="assertive"></div>
-                                    </div>
-                                    <div class="cta"><button type="submit">Submit</button></div>
-                                `;
-                                // Re-attach the event listener after resetting the form
-                                const newForm = document.getElementById('contact-form');
-                                attachFormSubmitListener(newForm);
-                            }, 3000); // Adjust the delay as needed
-                        })
-                        .catch((error) => {
-                            // Show error message
-                            currentForm.innerHTML = '<p style="color: red;">Oops! Something went wrong. Please try again later.</p>';
-                            console.error("Form submission error:", error);
-                            const submitButton = currentForm.querySelector('button[type="submit"]');
-                            if (submitButton) {
-                                submitButton.textContent = 'Submit';
-                                submitButton.disabled = false;
-                            }
-                        });
-                    }
-                });
-            }
-
-            // Attach the event listener to the initial form
-            attachFormSubmitListener(form);
-        })();
 
         // JavaScript for cookie consent banner
         const cookieBanner = document.getElementById('cookie-banner');
