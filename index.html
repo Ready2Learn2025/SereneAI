@@ -107,10 +107,6 @@
                     <input type="text" id="user-input" aria-label="Type your response" />
                     <button id="send-btn">Send</button>
                 </div>
-                <div id="confirm-area"></div>
-                <div id="submit-area" style="display:none;margin-top:1rem;">
-                    <button id="submit-btn">Submit</button>
-                </div>
             </div>
         </section>
     </main>
@@ -131,30 +127,23 @@
         const chat=document.getElementById('chat');
         const userInput=document.getElementById('user-input');
         const sendBtn=document.getElementById('send-btn');
-        const confirmArea=document.getElementById('confirm-area');
-        const submitArea=document.getElementById('submit-area');
-        const submitBtn=document.getElementById('submit-btn');
 
         if(!chat) return;
 
         const data={};
-        function getChatbotWelcomeMessage(userSession) {
-            const hasUserInfo = userSession.name && (userSession.email || userSession.phone) && userSession.message;
-            if (!hasUserInfo) {
+        function getChatbotWelcomeMessage(session){
+            if(!session.message){
                 return (
-                    "Hi! I\u2019m SereneAI, your virtual assistant.\n" +
-                    "To help one of our team get back to you, please leave:\n" +
-                    "\u2013 Your name\n" +
-                    "\u2013 Your email or phone number\n" +
-                    "\u2013 A short description of how we can help\n" +
+                    "Hi! I\u2019m SereneAI, your virtual assistant.\n"+
+                    "Please share your name, email or phone number, and how we can help you.\n"+
                     "We\u2019ll be in touch as soon as we can."
                 );
-            } else {
-                return "Thanks! We\u2019ve got your details. A team member will be in contact shortly.";
+            }else{
+                return "Thanks! We\u2019ve got your details and will be in contact shortly.";
             }
         }
-        let step=0;
-        let temp="";
+
+        let received=false;
 
         function addMessage(text,cls){
             const div=document.createElement('div');
@@ -166,72 +155,22 @@
 
         function ask(text){addMessage(text,'bot');}
 
-        function start(){
-            ask(getChatbotWelcomeMessage(data));
-        }
+        function start(){ask(getChatbotWelcomeMessage(data));}
 
         function handleSend(){
             const value=userInput.value.trim();
             if(!value)return;
             addMessage(value,'user');
             userInput.value='';
-            processInput(value);
-        }
-
-        function processInput(value){
-            switch(step){
-                case 0:
-                    temp=value;
-                    confirmStep(`You entered "${temp}". Is that correct?`,'name');
-                    break;
-                case 2:
-                    temp=value.toLowerCase();
-                    confirmStep(`You prefer ${temp} as the contact method. Is that correct?`,'method');
-                    break;
-                case 4:
-                    temp=value;
-                    confirmStep(`Is "${temp}" the correct contact detail?`,'detail');
-                    break;
-                case 6:
-                    temp=value;
-                    confirmStep(`You said the reason is "${temp}". Is that correct?`,'reason');
-                    break;
+            if(!received){
+                data.message=value;
+                received=true;
+                ask(getChatbotWelcomeMessage({message:value}));
             }
-        }
-
-        function confirmStep(text,type){
-            ask(text);
-            confirmArea.innerHTML='<div class="confirm-buttons"><button class="yes">Yes</button><button class="no">No</button></div>';
-            const yes=confirmArea.querySelector('.yes');
-            const no=confirmArea.querySelector('.no');
-            yes.onclick=()=>{
-                confirmArea.innerHTML='';
-                if(type==='name'){data.name=temp; step=1; ask('Thank you, '+data.name+'. Would you prefer email or phone for us to get in touch?'); step=2;}
-                else if(type==='method'){data.contactMethod=temp; step=3; ask('Please provide your '+data.contactMethod+'.'); step=4;}
-                else if(type==='detail'){data.contactDetail=temp; step=5; ask('What is the reason for contacting us? (general enquiry, support, booking, or feedback)'); step=6;}
-                else if(type==='reason'){data.reason=temp; step=7; finish();}
-            };
-            no.onclick=()=>{
-                confirmArea.innerHTML='';
-                if(type==='name'){step=0; ask('No problem. May I have your full name, please?');}
-                else if(type==='method'){step=2; ask('Okay, would you prefer email or phone?');}
-                else if(type==='detail'){step=4; ask('Please provide your '+data.contactMethod+'.');}
-                else if(type==='reason'){step=6; ask('Please tell me the reason for contacting us.');}
-            };
-        }
-
-        function finish(){
-            ask('All set. Please press Submit when you\'re ready.');
-            submitArea.style.display='block';
         }
 
         sendBtn.addEventListener('click',handleSend);
         userInput.addEventListener('keypress',e=>{if(e.key==='Enter'){handleSend();}});
-
-        submitBtn.addEventListener('click',()=>{
-            submitArea.innerHTML='Thank you. Someone from our team will be in touch shortly.';
-            console.log('Chatbot data:',data);
-        });
 
         start();
     })();
