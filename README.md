@@ -5,6 +5,7 @@ This repository contains the public website for **SereneAI LTD**. It is a small 
 ## Contents
 - `index.html` – landing page with service overview
 - `gpts.html` – links to publicly available GPTs
+- `products.html` – overview of SereneAI products
 - `privacy.html` – short privacy policy
 - `style.css` – shared styles for the site
 - `script.js` – cookie banner logic and dynamic year update
