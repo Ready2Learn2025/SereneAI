@@ -45,6 +45,7 @@
         --dark-gray:#4D4D4D;
         --white:#FFFFFF;
     }
+    html{scroll-behavior:smooth;}
     *{box-sizing:border-box;}
 
     body{
@@ -151,7 +152,7 @@
     .section{
         padding:5rem 2rem; /* Increased padding */
         max-width:1100px; /* Wider max width */
-        margin:0 auto;
+        margin:4rem auto; /* Consistent vertical spacing */
         text-align:center;
         animation:fadeInUp 1.25s ease-in-out;
     }
@@ -200,11 +201,35 @@
         font-size: 1.1rem; /* Slightly larger text */
     }
 
+    /* ===== Testimonials ===== */
+    .testimonial-cards{
+        display:grid;
+        grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+        gap:2rem;
+        margin-top:3rem;
+    }
+    .testimonial-card{
+        background:var(--white);
+        border:1px solid #ddd;
+        border-radius:12px;
+        box-shadow:0 4px 12px rgba(0,0,0,.05);
+        padding:2rem;
+        color:var(--dark-gray);
+        text-align:left;
+        opacity:0.8;
+        animation:fadeInUp 1.25s ease-in-out;
+    }
+    .user-icon{
+        font-size:2rem;
+        margin-bottom:1rem;
+        display:block;
+    }
+
     /* ===== Contact ===== */
     .contact-section{
         background:var(--white);
         padding:5rem 2rem; /* Increased padding */
-        margin:6rem auto 0; /* Increased margin */
+        margin:4rem auto; /* Consistent margin */
         max-width:800px; /* Wider max width */
         border-radius:12px; /* More rounded corners */
         box-shadow:0 6px 16px rgba(0,0,0,.05); /* Deeper shadow */
@@ -264,7 +289,7 @@
         display:inline-block;
         background:var(--teal);
         color:var(--white);
-        padding:1rem 2.5rem;
+        padding:1.25rem 3rem;
         border-radius:30px;
         font-family:'Montserrat',sans-serif;
         font-weight:600;
@@ -378,6 +403,29 @@
         background-color:#16725D;
         transform: translateY(-2px); /* Subtle hover effect */
     }
+
+    /* Sticky mobile CTA */
+    .mobile-cta{
+        display:none;
+        position:fixed;
+        bottom:1rem;
+        left:50%;
+        transform:translateX(-50%);
+        background:var(--teal);
+        color:var(--white);
+        padding:0.85rem 1.75rem;
+        border-radius:30px;
+        font-family:'Montserrat',sans-serif;
+        font-weight:600;
+        box-shadow:0 4px 8px rgba(0,0,0,0.2);
+        z-index:999;
+    }
+    .mobile-cta:hover{
+        background:#16725D;
+    }
+    @media(max-width:680px){
+        .mobile-cta{display:block;}
+    }
 </style>
 </head>
 
@@ -431,11 +479,15 @@
 
         <section id="testimonials" class="section">
             <h2>What Our Clients Say</h2>
-            <p class="section-intro">Real stories from the businesses we’ve helped – coming soon.</p>
-            <div class="icons-row">
-                <div class="icon-card" aria-hidden="true" style="opacity:0.5;">&nbsp;</div>
-                <div class="icon-card" aria-hidden="true" style="opacity:0.5;">&nbsp;</div>
-                <div class="icon-card" aria-hidden="true" style="opacity:0.5;">&nbsp;</div>
+            <div class="testimonial-cards">
+                <div class="testimonial-card" aria-hidden="true">
+                    <div class="user-icon">👤</div>
+                    <p><em>Testimonial coming soon...</em></p>
+                </div>
+                <div class="testimonial-card" aria-hidden="true">
+                    <div class="user-icon">👤</div>
+                    <p><em>Testimonial coming soon...</em></p>
+                </div>
             </div>
         </section>
 
@@ -449,17 +501,17 @@
 
                 <div class="form-group">
                     <label for="name">Your Name</label>
-                    <input type="text" id="name" name="name" placeholder="Jane Doe" aria-label="Your Name" required />
+                    <input type="text" id="name" name="name" placeholder="Jane Doe" aria-label="Your Name" aria-required="true" required />
                     <div class="error-msg" id="err-name" aria-live="assertive"></div>
                 </div>
                 <div class="form-group">
                     <label for="contact">Your Contact (Email or Phone)</label>
-                    <input type="text" id="contact" name="contact" placeholder="jane@example.com or +44 7700 900000" aria-label="Your Contact" required />
+                    <input type="text" id="contact" name="contact" placeholder="jane@example.com or +44 7700 900000" aria-label="Your Contact" aria-required="true" required />
                     <div class="error-msg" id="err-contact" aria-live="assertive"></div>
                 </div>
                 <div class="form-group">
                     <label for="question">Your Question</label>
-                    <textarea id="question" name="question" placeholder="What would you like to know?" aria-label="Your Question" required></textarea>
+                    <textarea id="question" name="question" placeholder="What would you like to know?" aria-label="Your Question" aria-required="true" required></textarea>
                     <div class="error-msg" id="err-question" aria-live="assertive"></div>
                 </div>
                 <div class="cta"><button type="submit">Submit</button></div>
@@ -470,6 +522,8 @@
     <footer role="contentinfo">
         <p>&copy; <span id="current-year">2025</span> SereneAI LTD. All rights reserved. <a href="privacy.html">Privacy Policy</a></p>
     </footer>
+
+    <a href="#contact" class="mobile-cta" aria-label="Jump to contact form">Message Us</a>
 
     <div id="cookie-banner">
         <p>
