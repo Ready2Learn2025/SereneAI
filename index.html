@@ -138,6 +138,21 @@
         if(!chat) return;
 
         const data={};
+        function getChatbotWelcomeMessage(userSession) {
+            const hasUserInfo = userSession.name && (userSession.email || userSession.phone) && userSession.message;
+            if (!hasUserInfo) {
+                return (
+                    "Hi! I\u2019m SereneAI, your virtual assistant.\n" +
+                    "To help one of our team get back to you, please leave:\n" +
+                    "\u2013 Your name\n" +
+                    "\u2013 Your email or phone number\n" +
+                    "\u2013 A short description of how we can help\n" +
+                    "We\u2019ll be in touch as soon as we can."
+                );
+            } else {
+                return "Thanks! We\u2019ve got your details. A team member will be in contact shortly.";
+            }
+        }
         let step=0;
         let temp="";
 
@@ -151,7 +166,9 @@
 
         function ask(text){addMessage(text,'bot');}
 
-        function start(){ask("Hello, I'm the SereneAI assistant. May I have your full name, please?");}
+        function start(){
+            ask(getChatbotWelcomeMessage(data));
+        }
 
         function handleSend(){
             const value=userInput.value.trim();
