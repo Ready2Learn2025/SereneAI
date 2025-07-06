@@ -3,10 +3,9 @@
 This repository contains the public website for **SereneAI LTD**. It is a small static site describing our services and providing access to free GPT tools.
 
 ## Contents
-- `index.html` – landing page with service overview and a simple contact chatbot
+- `index.html` – landing page with service overview
 - `gpts.html` – links to publicly available GPTs
 - `privacy.html` – short privacy policy
-- `chatbot.html` – standalone version of the chatbot widget
 - `style.css` – shared styles for the site
 - `script.js` – cookie banner logic and dynamic year update
 
