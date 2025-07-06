@@ -37,4 +37,48 @@ document.addEventListener('DOMContentLoaded', function() {
       cookieBanner.style.display = 'none';
     });
   }
+
+  const ctaButton = document.getElementById('cta-button');
+  const ctaModal = document.getElementById('cta-modal');
+  const ctaClose = document.getElementById('cta-close');
+  const ctaForm = document.getElementById('cta-form');
+
+  function closeModal() {
+    if (ctaModal) {
+      ctaModal.style.display = 'none';
+      document.body.style.overflow = '';
+    }
+  }
+
+  if (ctaButton && ctaModal) {
+    ctaButton.addEventListener('click', function() {
+      ctaModal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+      const firstInput = document.getElementById('cta-name');
+      if (firstInput) firstInput.focus();
+    });
+
+    if (ctaClose) {
+      ctaClose.addEventListener('click', closeModal);
+    }
+
+    ctaModal.addEventListener('click', function(e) {
+      if (e.target === ctaModal) {
+        closeModal();
+      }
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeModal();
+      }
+    });
+
+    if (ctaForm) {
+      ctaForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        ctaForm.innerHTML = '<p>Thank you. We\'ll be in touch soon.</p>';
+      });
+    }
+  }
 });

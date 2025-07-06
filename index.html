@@ -111,6 +111,23 @@
         </p>
         <button id="accept-cookies">Accept</button>
     </div>
+
+    <button id="cta-button" class="cta-button">Get Started</button>
+    <div id="cta-modal" class="cta-modal" role="dialog" aria-modal="true" aria-labelledby="cta-heading">
+        <div class="modal-content">
+            <button id="cta-close" aria-label="Close modal">&times;</button>
+            <h2 id="cta-heading">Let’s talk – share your details and we’ll be in touch</h2>
+            <form id="cta-form">
+                <label for="cta-name">Name</label>
+                <input id="cta-name" name="name" type="text" required>
+                <label for="cta-email">Email</label>
+                <input id="cta-email" name="email" type="email" required>
+                <label for="cta-company">Company</label>
+                <input id="cta-company" name="company" type="text">
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
