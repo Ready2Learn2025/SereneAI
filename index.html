@@ -426,6 +426,74 @@
     @media(max-width:680px){
         .mobile-cta{display:block;}
     }
+
+    /* ===== Chatbot Widget ===== */
+    #chat-widget{
+        position:fixed;
+        bottom:80px;
+        right:20px;
+        width:320px;
+        max-width:calc(100% - 40px);
+        background:var(--white);
+        border-radius:12px;
+        box-shadow:0 4px 12px rgba(0,0,0,.1);
+        padding:1rem;
+        display:none;
+        flex-direction:column;
+        z-index:1000;
+    }
+    .chat-area{
+        min-height:300px;
+        display:flex;
+        flex-direction:column;
+        gap:1rem;
+    }
+    .message{
+        max-width:80%;
+        padding:.75rem 1rem;
+        border-radius:20px;
+        line-height:1.4;
+    }
+    .bot{background:var(--alt-light);align-self:flex-start;}
+    .user{background:var(--teal);color:var(--white);align-self:flex-end;}
+    .input-area{display:flex;gap:.5rem;margin-top:1rem;}
+    .input-area input[type="text"]{
+        flex:1;
+        padding:.75rem 1rem;
+        border:1px solid #ccc;
+        border-radius:8px;
+        font-size:1rem;
+    }
+    .input-area button{
+        background:var(--teal);
+        color:var(--white);
+        border:none;
+        padding:.75rem 1.5rem;
+        border-radius:8px;
+        font-family:'Montserrat',sans-serif;
+        font-weight:600;
+        cursor:pointer;
+    }
+    #chat-toggle{
+        position:fixed;
+        bottom:20px;
+        right:20px;
+        background:var(--teal);
+        color:var(--white);
+        border:none;
+        padding:.75rem 1rem;
+        font-family:'Montserrat',sans-serif;
+        font-weight:600;
+        border-radius:30px;
+        cursor:pointer;
+        box-shadow:0 4px 8px rgba(0,0,0,0.2);
+        z-index:1001;
+    }
+    @media(max-width:480px){
+        #chat-widget{bottom:70px;right:10px;width:calc(100% - 20px);}
+        #chat-toggle{bottom:10px;right:10px;}
+        .message{max-width:100%;}
+    }
 </style>
 </head>
 
@@ -518,6 +586,8 @@
                 <div class="cta"><button type="submit">Submit</button></div>
             </form>
         </section>
+
+        <!-- Chat widget will be toggled with a button -->
     </main>
 
     <footer role="contentinfo">
@@ -531,6 +601,18 @@
             This website uses cookies to enhance your experience. By continuing to browse, you consent to our use of cookies as described in our <a href="privacy.html" style="color:#1D8A73; text-decoration:underline;">Privacy Policy</a>.
         </p>
         <button id="accept-cookies">Accept</button>
+    </div>
+
+    <button id="chat-toggle" aria-label="Open chat">Chat</button>
+    <div id="chat-widget" aria-label="Chatbot">
+        <div id="chat" class="chat-area" aria-live="polite"></div>
+        <div class="input-area">
+            <input type="text" id="user-input" aria-label="Type your response" />
+            <button id="send-btn">Send</button>
+        </div>
+        <div id="submit-area" style="display:none;margin-top:1rem;">
+            <button id="submit-btn">Submit</button>
+        </div>
     </div>
 
     <script>
@@ -741,6 +823,82 @@
             setCookie(cookieName, cookieValue, cookieExpiryDays);
             cookieBanner.style.display = 'none';
         };
+    </script>
+
+    <script>
+    (function(){
+        const chatToggle=document.getElementById('chat-toggle');
+        const widget=document.getElementById('chat-widget');
+        const chat=document.getElementById('chat');
+        const userInput=document.getElementById('user-input');
+        const sendBtn=document.getElementById('send-btn');
+        const submitArea=document.getElementById('submit-area');
+        const submitBtn=document.getElementById('submit-btn');
+
+        if(!chat) return;
+
+        const data={};
+        let step=0;
+
+        function addMessage(text,cls){
+            const div=document.createElement('div');
+            div.className='message '+cls;
+            div.textContent=text;
+            chat.appendChild(div);
+            chat.scrollTop=chat.scrollHeight;
+        }
+
+        function ask(text){addMessage(text,'bot');}
+
+        function start(){
+            ask("Hello, I'm the SereneAI assistant. May I have your full name, please?");
+        }
+
+        function handleSend(){
+            const value=userInput.value.trim();
+            if(!value) return;
+            addMessage(value,'user');
+            userInput.value='';
+            if(step===0){
+                data.name=value;
+                step=1;
+                ask('How should we contact you: email or phone?');
+            }else if(step===1){
+                data.contactMethod=value.toLowerCase();
+                step=2;
+                ask('Please provide your '+data.contactMethod+'.');
+            }else if(step===2){
+                data.contactDetail=value;
+                step=3;
+                ask('What is the reason for contacting us? (general enquiry, support, booking, or feedback)');
+            }else if(step===3){
+                data.reason=value;
+                step=4;
+                finish();
+            }
+        }
+
+        function finish(){
+            ask("All set. Please press Submit when you're ready.");
+            submitArea.style.display='block';
+        }
+
+        sendBtn.addEventListener('click',handleSend);
+        userInput.addEventListener('keypress',e=>{if(e.key==='Enter'){handleSend();}});
+
+        submitBtn.addEventListener('click',()=>{
+            submitArea.innerHTML='Thank you. Someone from our team will be in touch shortly.';
+            console.log('Chatbot data:',data);
+        });
+
+        chatToggle.addEventListener('click',()=>{
+            const visible=widget.style.display==='flex';
+            widget.style.display=visible?'none':'flex';
+            if(!visible && step===0 && chat.childElementCount===0){
+                start();
+            }
+        });
+    })();
     </script>
 </body>
 </html>
