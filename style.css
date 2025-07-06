@@ -130,13 +130,28 @@
     }
 
     /* ===== Services icons (GRID) ===== */
-    .icons-row{
-        display:grid;
-        grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); /* Wider cards */
-        gap:2.5rem; /* Increased gap */
-        justify-items:center;
-        margin-top:3rem; /* Increased margin */
-    }
+.icons-row{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); /* Wider cards */
+    gap:2.5rem; /* Increased gap */
+    justify-items:center;
+    margin-top:3rem; /* Increased margin */
+}
+
+/* Services carousel */
+.services-carousel{
+    overflow:hidden;
+}
+.services-carousel .icons-row{
+    display:flex;
+    gap:2.5rem;
+    flex-wrap:nowrap;
+    width:max-content;
+    animation:scroll-ltr 30s linear infinite;
+}
+.services-carousel:hover .icons-row{
+    animation-play-state:paused;
+}
     .icon-card{
         background:var(--white);
         padding:2rem; /* Increased padding */
@@ -163,12 +178,27 @@
     }
 
     /* ===== Testimonials ===== */
-    .testimonial-cards{
-        display:grid;
-        grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-        gap:2rem;
-        margin-top:3rem;
-    }
+.testimonial-cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:2rem;
+    margin-top:3rem;
+}
+
+/* Testimonials carousel */
+.testimonials-carousel{
+    overflow:hidden;
+}
+.testimonials-carousel .testimonial-cards{
+    display:flex;
+    gap:2rem;
+    flex-wrap:nowrap;
+    width:max-content;
+    animation:scroll-rtl 30s linear infinite;
+}
+.testimonials-carousel:hover .testimonial-cards{
+    animation-play-state:paused;
+}
     .testimonial-card{
         background:var(--white);
         border:1px solid #ddd;
@@ -211,6 +241,8 @@
     @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
     @keyframes fadeInUp{0%{opacity:0;transform:translateY(30px);}100%{opacity:1;transform:translateY(0);}}
     @keyframes slideIn{0%{opacity:0;transform:translateX(-40px);}100%{opacity:1;transform:translateX(0);}}
+    @keyframes scroll-ltr{from{transform:translateX(-50%);}to{transform:translateX(0);}}
+    @keyframes scroll-rtl{from{transform:translateX(0);}to{transform:translateX(-50%);}}
 
     @media(prefers-reduced-motion:reduce){
         *,*::before,*::after{animation:none!important;transition:none!important;}
