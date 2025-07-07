@@ -381,6 +381,7 @@
         justify-content: center;
         z-index: 1001;
         padding: 1rem;
+        overflow-y: auto; /* Allow scrolling when content exceeds viewport */
     }
 
     #cta-modal .modal-content {
