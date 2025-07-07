@@ -79,10 +79,12 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
 
+    // Allow default form submission so Netlify can capture entries
+    // Modal will close automatically when the browser navigates away
+    // to Netlify's default form success page.
     if (ctaForm) {
-      ctaForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        ctaForm.innerHTML = '<p>Thank you. We\'ll be in touch soon.</p>';
+      ctaForm.addEventListener('submit', function() {
+        closeModal();
       });
     }
   }
