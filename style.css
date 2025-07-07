@@ -385,3 +385,37 @@
 
 
 
+
+/* ===== Profile Page ===== */
+.profile {
+    text-align: center;
+    padding: 4rem 2rem;
+}
+
+.profile .profile-picture {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background-color: #ddd;
+    margin: 0 auto 1.5rem;
+}
+
+.profile .social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.profile .social-icons a svg {
+    width: 32px;
+    height: 32px;
+    fill: var(--teal);
+    transition: fill 0.3s ease, transform 0.2s ease-in-out;
+}
+
+.profile .social-icons a:hover svg {
+    fill: var(--navy);
+    transform: translateY(-2px);
+}
+
