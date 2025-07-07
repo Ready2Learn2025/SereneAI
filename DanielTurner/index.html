@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' https:; connect-src 'self'">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     <title>Daniel Turner – Links</title>
     <meta name="description" content="Links and information for SereneAI founder Daniel Turner." />
 
@@ -30,7 +32,7 @@
             <h1>Daniel Turner</h1>
             <p>Founder of SereneAI, passionate about using AI to simplify business.</p>
             <div class="social-icons">
-                <a href="http://www.linkedin.com/in/danielcjturner" aria-label="LinkedIn">
+                <a href="https://www.linkedin.com/in/danielcjturner" aria-label="LinkedIn">
                     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 23h5V7H0v16zM7 9h4.76v1.93h.07c.66-1.24 2.27-2.54 4.67-2.54 5 0 5.9 3.3 5.9 7.59V23h-5v-6.65c0-1.59-.03-3.63-2.21-3.63-2.21 0-2.55 1.73-2.55 3.52V23H7V9z"/></svg>
                 </a>
                 <a href="https://www.tiktok.com/@daniel.turner.ai" aria-label="TikTok">
@@ -49,6 +51,7 @@
             This website uses cookies to enhance your experience. By continuing to browse, you consent to our use of cookies as described in our <a href="../privacy.html" style="color:#1D8A73; text-decoration:underline;">Privacy Policy</a>.
         </p>
         <button id="accept-cookies">Accept</button>
+        <button id="reject-cookies">Reject</button>
     </div>
 
     <button id="cta-button" class="cta-button">Get Started</button>
@@ -81,6 +84,6 @@
         </div>
     </div>
 
-    <script src="../script.js"></script>
+    <script src="../script.js" defer></script>
 </body>
 </html>
