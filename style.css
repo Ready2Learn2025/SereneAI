@@ -381,6 +381,7 @@
         justify-content: center;
         z-index: 1001;
         padding: 1rem;
+        overflow-y: auto; /* Allow scrolling when content exceeds viewport */
     }
 
     #cta-modal .modal-content {
@@ -407,6 +408,20 @@
         border: 1px solid var(--dark-gray);
         border-radius: 4px;
         font-size: 1rem;
+    }
+
+    #cta-modal select,
+    #cta-modal textarea {
+        width: 100%;
+        padding: 0.5rem;
+        margin-top: 0.25rem;
+        border: 1px solid var(--dark-gray);
+        border-radius: 4px;
+        font-size: 1rem;
+    }
+
+    #cta-modal textarea {
+        resize: vertical;
     }
 
     #cta-modal button[type="submit"] {
