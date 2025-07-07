@@ -152,7 +152,8 @@
         <div class="modal-content">
             <button id="cta-close" aria-label="Close modal">&times;</button>
             <h2 id="cta-heading">Let’s talk – share your details and we’ll be in touch</h2>
-            <form id="cta-form">
+            <form id="cta-form" name="contact" method="POST" data-netlify="true">
+                <input type="hidden" name="form-name" value="contact">
                 <label for="cta-name">Name</label>
                 <input id="cta-name" name="name" type="text" required>
                 <label for="cta-email">Email</label>
