@@ -48,6 +48,51 @@ document.addEventListener('DOMContentLoaded', function() {
   const ctaClose = document.getElementById('cta-close');
   const ctaForm = document.getElementById('cta-form');
 
+  // ----- Logo Intro Animation -----
+  const body = document.body;
+  const isHome = body.classList.contains('home');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (isHome && !body.classList.contains('logo-intro-done') && !reducedMotion) {
+    if (localStorage.getItem('logoIntroDone') === 'true') {
+      body.classList.add('logo-intro-done');
+    } else {
+      runLogoIntro();
+    }
+  }
+
+  function runLogoIntro() {
+    const headerLogo = document.querySelector('header .logo');
+    if (!headerLogo) return;
+
+    const overlay = document.createElement('div');
+    overlay.id = 'logo-intro';
+    overlay.setAttribute('aria-hidden', 'true');
+    const clone = headerLogo.cloneNode(true);
+    overlay.appendChild(clone);
+    document.body.appendChild(overlay);
+    body.classList.add('intro-playing');
+
+    // Allow layout to settle before measuring
+    setTimeout(() => {
+      const target = headerLogo.getBoundingClientRect();
+      const start = clone.getBoundingClientRect();
+      const dx = target.left + target.width / 2 - (start.left + start.width / 2);
+      const dy = target.top + target.height / 2 - (start.top + start.height / 2);
+      const scale = target.width / start.width;
+
+      clone.style.transform = `translate(${dx}px, ${dy}px) scale(${scale})`;
+      overlay.style.background = 'transparent';
+    }, 200); // brief pause before moving
+
+    clone.addEventListener('transitionend', () => {
+      overlay.remove();
+      body.classList.remove('intro-playing');
+      body.classList.add('logo-intro-done');
+      localStorage.setItem('logoIntroDone', 'true');
+    });
+  }
+
   function closeModal() {
     if (ctaModal) {
       ctaModal.style.display = 'none';
