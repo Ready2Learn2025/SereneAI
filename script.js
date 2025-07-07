@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   const cookieBanner = document.getElementById('cookie-banner');
   const acceptBtn = document.getElementById('accept-cookies');
+  const rejectBtn = document.getElementById("reject-cookies");
   const cookieName = 'uk_gdpr_consent';
   const cookieValue = 'accepted';
   const cookieExpiryDays = 365;
@@ -28,13 +29,17 @@ document.addEventListener('DOMContentLoaded', function() {
     return null;
   }
 
-  if (cookieBanner && acceptBtn) {
+  if (cookieBanner && acceptBtn && rejectBtn) {
     if (!getCookie(cookieName)) {
       cookieBanner.style.display = 'block';
     }
-    acceptBtn.addEventListener('click', function() {
+    acceptBtn.addEventListener("click", function() {
       setCookie(cookieName, cookieValue, cookieExpiryDays);
-      cookieBanner.style.display = 'none';
+      cookieBanner.style.display = "none";
+    });
+    rejectBtn.addEventListener("click", function() {
+      setCookie(cookieName, "rejected", cookieExpiryDays);
+      cookieBanner.style.display = "none";
     });
   }
 
