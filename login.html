@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' https:; connect-src 'self' https://zzddwdnnddgfjtcncygj.supabase.co">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <title>Login - SereneAI</title>
+    <link rel="alternate" href="https://sereneai.co.uk/login.html" hreflang="en-GB">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Open+Sans:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <script src="auth.js"></script>
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <header role="banner">
+        <div class="logo">SereneAI&nbsp;LTD</div>
+        <input type="checkbox" id="nav-toggle" aria-label="Toggle navigation">
+        <label for="nav-toggle" class="nav-label"><span></span></label>
+        <nav aria-label="Main navigation">
+            <a href="index.html" aria-label="Home">Home</a>
+            <a href="gpts.html" aria-label="SereneAI GPTs">GPTs</a>
+            <a href="products.html" aria-label="Products page">Products</a>
+        </nav>
+    </header>
+    <main id="main-content">
+        <section class="hero">
+            <h1>Login</h1>
+            <form id="login-form" class="auth-form">
+                <label for="login-email">Email</label>
+                <input id="login-email" type="email" required>
+                <label for="login-password">Password</label>
+                <input id="login-password" type="password" required>
+                <button type="submit">Login</button>
+            </form>
+            <p>Need an account? <a href="signup.html">Sign up</a></p>
+        </section>
+    </main>
+    <footer role="contentinfo">
+        <p>&copy; <span id="current-year">2024</span> SereneAI LTD. All rights reserved. <a href="privacy.html">Privacy Policy</a></p>
+    </footer>
+    <script src="script.js" defer></script>
+    <script>
+    // Handle login form submission using Supabase
+    document.getElementById('login-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const email = document.getElementById('login-email').value;
+        const password = document.getElementById('login-password').value;
+        const { error } = await supabase.auth.signInWithPassword({ email, password });
+        if (error) {
+            alert(error.message);
+        } else {
+            window.location.href = 'gpts.html';
+        }
+    });
+    </script>
+</body>
+</html>
