@@ -107,7 +107,8 @@
             transition:max-height .3s ease;
             box-shadow:0 2px 4px rgba(0,0,0,.05);
         }
-        #nav-toggle:checked ~ nav{max-height:300px; /* Increased max height for more links */}
+        #nav-toggle:checked ~ nav,
+        nav.open{max-height:300px; /* Increased max height for more links */}
     }
 
     /* ===== Hero ===== */
