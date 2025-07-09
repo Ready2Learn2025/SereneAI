@@ -43,6 +43,25 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
+  // ----- Mobile Nav Toggle -----
+  const navToggle = document.getElementById('nav-toggle');
+  const nav = document.querySelector('header nav');
+  if (navToggle && nav) {
+    // Sync class with checkbox state
+    navToggle.addEventListener('change', function () {
+      nav.classList.toggle('open', navToggle.checked);
+      navToggle.setAttribute('aria-expanded', navToggle.checked);
+    });
+
+    // Close menu when a nav link is selected
+    nav.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        navToggle.checked = false;
+        nav.classList.remove('open');
+      });
+    });
+  }
+
   const ctaButton = document.getElementById('cta-button');
   const ctaModal = document.getElementById('cta-modal');
   const ctaClose = document.getElementById('cta-close');
