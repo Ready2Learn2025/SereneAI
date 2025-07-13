@@ -400,16 +400,25 @@
         background-color: var(--white);
         color: var(--navy);
         border-radius: 8px;
-        max-width: 420px;
+        max-width: 600px; /* Responsive width for desktop */
         width: 100%;
+        margin: auto; /* Center within modal */
         padding: 2rem;
         box-shadow: 0 6px 10px rgba(0,0,0,0.1);
         text-align: center;
     }
 
+    #cta-form {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        width: 100%;
+    }
+
     #cta-modal label {
         display: block;
         margin-top: 1rem;
+        margin-bottom: 0.25rem;
         text-align: left;
     }
 
@@ -417,6 +426,7 @@
         width: 100%;
         padding: 0.5rem;
         margin-top: 0.25rem;
+        margin-bottom: 0.75rem;
         border: 1px solid var(--dark-gray);
         border-radius: 4px;
         font-size: 1rem;
@@ -427,6 +437,7 @@
         width: 100%;
         padding: 0.5rem;
         margin-top: 0.25rem;
+        margin-bottom: 0.75rem;
         border: 1px solid var(--dark-gray);
         border-radius: 4px;
         font-size: 1rem;
